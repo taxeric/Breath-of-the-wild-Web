@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset1.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2306472_s8tp7k2au.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="../jsons/picturebook/creatures.js"></script>
+    <script type="text/javascript" src="../jsons/picturebook/equipment.js"></script>
+    <script type="text/javascript" src="../jsons/picturebook/materials.js"></script>
+    <script type="text/javascript" src="../jsons/picturebook/monsters.js"></script>
+    <script type="text/javascript" src="../jsons/picturebook/treasure.js"></script>
+    <style>
+        .page {
+            width: 100%;
+            background-image: -webkit-radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+            background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+        }
+
+        .guilds {
+            margin-top: 24px;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .shopingBox {
+            width: 1226px;
+            margin: auto;
+            overflow: visible;
+        }
+
+        .choose {
+            padding-top: 20px;
+        }
+
+        .lists {
+            width: 1240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .goods {
+            width: 254px;
+            text-align: center;
+            float: left;
+            margin-bottom: 32px;
+            margin-right: 56px;
+        }
+
+        .goods .big {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .text1 {
+            font-size: 18px;
+            color: rgb(0, 246, 255);
+            letter-spacing: 4px;
+            margin-top: 8px;
+        }
+
+        .M-box {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .waibox {
+            width: 100%;
+            text-align: center;
+        }
+
+        .bar {
+            position: fixed;
+            bottom: 76px;
+            right: 0;
+            z-index: 99;
+            display: block;
+            position: fixed;
+        }
+
+        .bar1 {
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 104px;
+            height: 80px;
+            margin-top: -1px;
+            background-color: transparent;
+        }
+
+        .bar img {
+            width: 52px;
+            height: 40px;
+        }
+
+        .bar .backToTop {
+            width: 32px;
+            height: 32px;
+        }
+
+        .w1 {
+            margin: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .top-box {
+            width: 100%;
+            position: relative;
+        }
+
+        .top-box-logo {
+            position: absolute;
+            margin-left: 8px;
+            top: 0;
+            left: 0;
+        }
+
+        .top-video {
+            width: 100%;
+            height: 512px;
+            display: block;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="page">
+
+    <div class="top-box">
+        <video class="top-video" src="../images/Header-Features.mp4" autoplay muted loop></video>
+        <div class="top-box-logo">
+            <a href="index.html">
+              <img src="../images/zelda-botw-logo-small.png">
+            </a>
+        </div>
+    </div>
+
+    <div class="guilds">
+        <div style="position:relative">
+          <div class="w">
+            <div class="shopingBox">
+              <div class="choose">
+                <ul class="lists"></ul>
+                <div class="waibox">
+                  <div class="M-box"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div  style="position: absolute;top: 0;height: 100%; z-index: -1;">
+            <canvas id="canv" width="100%" height="100%" style="aspect-ratio: unset;height: 100%;width: 100%;"></canvas>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="bar">
+        <ul>
+            <li>
+                <div class="bar1 creatures">
+                    <img src="../images/Creatures.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="bar1 monsters">
+                    <img src="../images/Monsters.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="bar1 materials">
+                    <img src="../images/Materials.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="bar1 equipment">
+                    <img src="../images/Equipment.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="bar1 treasure">
+                    <img src="../images/Treasure.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="bar1 bar6">
+                    <img class="backToTop" src="https://i1.mifile.cn/f/i/2018/home/totop_hover.png" alt="">
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+<script>
+
+        var num = 200;
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var max = 100;
+        var _x = 0;
+        var _y = 0;
+        var _z = 100;
+        var dtr = function(d) {
+          return d * Math.PI / 180;
+        };
+    
+        var rnd = function() {
+          return Math.sin(Math.floor(Math.random() * 360) * Math.PI / 180);
+        };
+        var dist = function(p1, p2, p3) {
+          return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) + Math.pow(p2.z - p1.z, 2));
+        };
+    
+        var cam = {
+          obj: {
+            x: _x,
+            y: _y,
+            z: _z
+          },
+          dest: {
+            x: 0,
+            y: 0,
+            z: 1
+          },
+          dist: {
+            x: 0,
+            y: 0,
+            z: 200
+          },
+          ang: {
+            cplane: 0,
+            splane: 0,
+            ctheta: 0,
+            stheta: 0
+          },
+          zoom: 1,
+          disp: {
+            x: w / 2,
+            y: h / 2,
+            z: 0
+          },
+          upd: function() {
+            cam.dist.x = cam.dest.x - cam.obj.x;
+            cam.dist.y = cam.dest.y - cam.obj.y;
+            cam.dist.z = cam.dest.z - cam.obj.z;
+            cam.ang.cplane = -cam.dist.z / Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z);
+            cam.ang.splane = cam.dist.x / Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z);
+            cam.ang.ctheta = Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.z * cam.dist.z) / Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.y * cam.dist.y + cam.dist.z * cam.dist.z);
+            cam.ang.stheta = -cam.dist.y / Math.sqrt(cam.dist.x * cam.dist.x + cam.dist.y * cam.dist.y + cam.dist.z * cam.dist.z);
+          }
+        };
+    
+        var trans = {
+          parts: {
+            sz: function(p, sz) {
+              return {
+                x: p.x * sz.x,
+                y: p.y * sz.y,
+                z: p.z * sz.z
+              };
+            },
+            rot: {
+              x: function(p, rot) {
+                return {
+                  x: p.x,
+                  y: p.y * Math.cos(dtr(rot.x)) - p.z * Math.sin(dtr(rot.x)),
+                  z: p.y * Math.sin(dtr(rot.x)) + p.z * Math.cos(dtr(rot.x))
+                };
+              },
+              y: function(p, rot) {
+                return {
+                  x: p.x * Math.cos(dtr(rot.y)) + p.z * Math.sin(dtr(rot.y)),
+                  y: p.y,
+                  z: -p.x * Math.sin(dtr(rot.y)) + p.z * Math.cos(dtr(rot.y))
+                };
+              },
+              z: function(p, rot) {
+                return {
+                  x: p.x * Math.cos(dtr(rot.z)) - p.y * Math.sin(dtr(rot.z)),
+                  y: p.x * Math.sin(dtr(rot.z)) + p.y * Math.cos(dtr(rot.z)),
+                  z: p.z
+                };
+              }
+            },
+            pos: function(p, pos) {
+              return {
+                x: p.x + pos.x,
+                y: p.y + pos.y,
+                z: p.z + pos.z
+              };
+            }
+          },
+          pov: {
+            plane: function(p) {
+              return {
+                x: p.x * cam.ang.cplane + p.z * cam.ang.splane,
+                y: p.y,
+                z: p.x * -cam.ang.splane + p.z * cam.ang.cplane
+              };
+            },
+            theta: function(p) {
+              return {
+                x: p.x,
+                y: p.y * cam.ang.ctheta - p.z * cam.ang.stheta,
+                z: p.y * cam.ang.stheta + p.z * cam.ang.ctheta
+              };
+            },
+            set: function(p) {
+              return {
+                x: p.x - cam.obj.x,
+                y: p.y - cam.obj.y,
+                z: p.z - cam.obj.z
+              };
+            }
+          },
+          persp: function(p) {
+            return {
+              x: p.x * cam.dist.z / p.z * cam.zoom,
+              y: p.y * cam.dist.z / p.z * cam.zoom,
+              z: p.z * cam.zoom,
+              p: cam.dist.z / p.z
+            };
+          },
+          disp: function(p, disp) {
+            return {
+              x: p.x + disp.x,
+              y: -p.y + disp.y,
+              z: p.z + disp.z,
+              p: p.p
+            };
+          },
+          steps: function(_obj_, sz, rot, pos, disp) {
+            var _args = trans.parts.sz(_obj_, sz);
+            _args = trans.parts.rot.x(_args, rot);
+            _args = trans.parts.rot.y(_args, rot);
+            _args = trans.parts.rot.z(_args, rot);
+            _args = trans.parts.pos(_args, pos);
+            _args = trans.pov.plane(_args);
+            _args = trans.pov.theta(_args);
+            _args = trans.pov.set(_args);
+            _args = trans.persp(_args);
+            _args = trans.disp(_args, disp);
+            return _args;
+          }
+        };
+    
+        (function() {
+          "use strict";
+          var threeD = function(param) {
+            this.transIn = {};
+            this.transOut = {};
+            this.transIn.vtx = (param.vtx);
+            this.transIn.sz = (param.sz);
+            this.transIn.rot = (param.rot);
+            this.transIn.pos = (param.pos);
+          };
+    
+          threeD.prototype.vupd = function() {
+            this.transOut = trans.steps(
+    
+              this.transIn.vtx,
+              this.transIn.sz,
+              this.transIn.rot,
+              this.transIn.pos,
+              cam.disp
+            );
+          };
+    
+          var Build = function() {
+            this.vel = 0.04;
+            this.lim = 360;
+            this.diff = 200;
+            this.initPos = 100;
+            this.toX = _x;
+            this.toY = _y;
+            this.go();
+          };
+    
+          Build.prototype.go = function() {
+            this.canvas = document.getElementById("canv");
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.$ = canv.getContext("2d");
+            this.$.globalCompositeOperation = 'source-over';
+            this.varr = [];
+            this.dist = [];
+            this.calc = [];
+    
+            for (var i = 0, len = num; i < len; i++) {
+              this.add();
+            }
+    
+            this.rotObj = {
+              x: 0,
+              y: 0,
+              z: 0
+            };
+            this.objSz = {
+              x: w / 5,
+              y: h / 5,
+              z: w / 5
+            };
+          };
+    
+          Build.prototype.add = function() {
+            this.varr.push(new threeD({
+              vtx: {
+                x: rnd(),
+                y: rnd(),
+                z: rnd()
+              },
+              sz: {
+                x: 0,
+                y: 0,
+                z: 0
+              },
+              rot: {
+                x: 20,
+                y: -20,
+                z: 0
+              },
+              pos: {
+                x: this.diff * Math.sin(360 * Math.random() * Math.PI / 180),
+                y: this.diff * Math.sin(360 * Math.random() * Math.PI / 180),
+                z: this.diff * Math.sin(360 * Math.random() * Math.PI / 180)
+              }
+            }));
+            this.calc.push({
+              x: 360 * Math.random(),
+              y: 360 * Math.random(),
+              z: 360 * Math.random()
+            });
+          };
+    
+          Build.prototype.upd = function() {
+            cam.obj.x += (this.toX - cam.obj.x) * 0.05;
+            cam.obj.y += (this.toY - cam.obj.y) * 0.05;
+          };
+    
+          Build.prototype.draw = function() {
+            this.$.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            cam.upd();
+            this.rotObj.x += 0.1;
+            this.rotObj.y += 0.1;
+            this.rotObj.z += 0.1;
+    
+            for (var i = 0; i < this.varr.length; i++) {
+              for (var val in this.calc[i]) {
+                if (this.calc[i].hasOwnProperty(val)) {
+                  this.calc[i][val] += this.vel;
+                  if (this.calc[i][val] > this.lim) this.calc[i][val] = 0;
+                }
+              }
+    
+              this.varr[i].transIn.pos = {
+                x: this.diff * Math.cos(this.calc[i].x * Math.PI / 180),
+                y: this.diff * Math.sin(this.calc[i].y * Math.PI / 180),
+                z: this.diff * Math.sin(this.calc[i].z * Math.PI / 180)
+              };
+              this.varr[i].transIn.rot = this.rotObj;
+              this.varr[i].transIn.sz = this.objSz;
+              this.varr[i].vupd();
+              if (this.varr[i].transOut.p < 0) continue;
+              var g = this.$.createRadialGradient(this.varr[i].transOut.x, this.varr[i].transOut.y, this.varr[i].transOut.p, this.varr[i].transOut.x, this.varr[i].transOut.y, this.varr[i].transOut.p * 2);
+              this.$.globalCompositeOperation = 'lighter';
+              g.addColorStop(0, 'hsla(255, 255%, 255%, 1)');
+              g.addColorStop(.5, 'hsla(' + (i + 2) + ',85%, 40%,1)');
+              g.addColorStop(1, 'hsla(' + (i) + ',85%, 40%,.5)');
+              this.$.fillStyle = g;
+              this.$.beginPath();
+              this.$.arc(this.varr[i].transOut.x, this.varr[i].transOut.y, this.varr[i].transOut.p * 2, 0, Math.PI * 2, false);
+              this.$.fill();
+              this.$.closePath();
+            }
+          };
+          Build.prototype.anim = function() {
+            window.requestAnimationFrame = (function() {
+              return window.requestAnimationFrame ||
+                function(callback, element) {
+                  window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+            var anim = function() {
+              this.upd();
+              this.draw();
+              window.requestAnimationFrame(anim);
+            }.bind(this);
+            window.requestAnimationFrame(anim);
+          };
+    
+          Build.prototype.run = function() {
+            this.anim();
+    
+            window.addEventListener('mousemove', function(e) {
+              this.toX = (e.clientX - this.canvas.width / 2) * -0.8;
+              this.toY = (e.clientY - this.canvas.height / 2) * 0.8;
+            }.bind(this));
+            window.addEventListener('touchmove', function(e) {
+              e.preventDefault();
+              this.toX = (e.touches[0].clientX - this.canvas.width / 2) * -0.8;
+              this.toY = (e.touches[0].clientY - this.canvas.height / 2) * 0.8;
+            }.bind(this));
+            // window.addEventListener('mousedown', function(e) {
+            //   for (var i = 0; i < 100; i++) {
+            //     this.add();
+            //   }
+            // }.bind(this));
+            window.addEventListener('touchstart', function(e) {
+              e.preventDefault();
+              for (var i = 0; i < 100; i++) {
+                this.add();
+              }
+            }.bind(this));
+          };
+          var app = new Build();
+          app.run();
+        })();
+        window.addEventListener('resize', function() {
+          canvas.width = w = window.innerWidth;
+          canvas.height = h = window.innerHeight;
+        }, false);
+
+    getData1();
+
+    $(".creatures").click(function(){
+        getData1(creaturesData)
+    })
+    $(".monsters").click(function(){
+        getData1(monstersData)
+    })
+    $(".materials").click(function(){
+        getData1(materialsData)
+    })
+    $(".equipment").click(function(){
+        getData1(equipmentData)
+    })
+    $(".treasure").click(function(){
+        getData1(treasureData)
+    })
+
+    //平滑滚动到顶部
+    $(".bar6").click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+    })
+
+
+    function getData1(dataValue) {
+            let data = dataValue?dataValue:creaturesData
+
+            if (data) {
+                var html = "";
+                data.forEach(function (goods) {
+                    var { id, name,image,category } = goods
+                    html += `<li class="goods">
+                        <a href="./singlePicturebook.html?gid=${id}&category=${category}">
+                        <img class="big"
+                            src="${image}"
+                            alt="">
+                        <p class="text1">${name}</p>
+                        </a>
+                    </li>`;
+                })
+                $(".lists").html(html);
+                $('html, body').animate({ scrollTop: 0 }, 800);
+            } else {
+                $(".lists").html('');
+            }
+    }
+
+</script>
+
+</html>

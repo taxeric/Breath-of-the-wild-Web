@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset1.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2306472_s8tp7k2au.css">
+    <script src="../js/ajax.js"></script>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <!-- <link rel="stylesheet" href="../css/media-nav.css"> -->
+    <style>
+
+        @font-face {
+            font-family: 'MedulaOne-Regular';
+            src: url('../fonts/MedulaOne-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Courgette-Regular';
+            src: url('../fonts/Courgette-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Satisfy-Regular';
+            src: url('../fonts/Satisfy-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body::before {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(23, 6, 6, 0.8) 0%, rgba(23, 6, 6, 0) 40%, rgba(23, 6, 6, 0) 40%, rgba(23, 6, 6, 0) 65%, rgba(23, 6, 6, 0.8) 100%);
+        }
+
+        .bodyBox1 {
+            background: url("../images/main_background.jpg");
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .page2 {
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .top-box {
+            width: 100%;
+            position: relative;
+        }
+
+        .top-box-video-bar {
+            height: 128px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: auto;
+            background-color: transparent; /* 蓝色背景 */
+        }
+
+        .top-box-logo {
+            position: absolute;
+            margin-left: 8px;
+            top: 0;
+            left: 0;
+        }
+
+        .top-video {
+            width: 100%;
+            height: 512px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .top-navigator {
+            z-index: 99;
+            display: none;
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            background-color: aqua;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .top-navigator .inner-navigator-div {
+            letter-spacing: 2px;
+            font-size: 32px;
+            display: inline-block;
+        }
+
+        .top-navigator span {
+            color: white;
+        }
+
+        .top-navigator span:hover {
+            color: #B99F65;
+        }
+
+        .exxul {
+            list-style-type: none;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-top: 16px;
+        }
+
+        .exxul li {
+            line-height: 48px;
+            letter-spacing: 2px;
+            font-size: 32px;
+            font-family: "MedulaOne-Regular";
+        }
+
+        .exxul li span {
+            color: white;
+        }
+
+        .exxul li span:hover {
+            color: #B99F65;
+        }
+
+        .haibao {
+            padding-top: 48px;
+            width: 1226px;
+            height: 618px;
+            /* background: violet; */
+            position: relative;
+        }
+
+        .left {
+            position: absolute;
+            top: 342px;
+            left: 63px;
+            width: 64px;
+            height: 64px;
+            z-index: 100;
+        }
+
+        .left :hover {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 40px;
+            height: 60px;
+        }
+
+        .left i {
+            font-size: 30px;
+            line-height: 62px;
+
+        }
+
+        .right i {
+            margin-left: 5px;
+            font-size: 30px;
+            line-height: 62px;
+
+        }
+
+        .right :hover {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 40px;
+            height: 58px;
+        }
+
+        .right {
+            position: absolute;
+            top: 342px;
+            left: 1126px;
+            width: 64px;
+            height: 64px;
+            z-index: 100;
+        }
+
+        .liList {
+            position: absolute;
+            bottom: 10px;
+            left: 1020px;
+        }
+
+        .liList li {
+            float: left;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            border: 2px solid rgba(100, 100, 100, 1);
+            border-radius: 45px;
+        }
+
+        .haibao {
+            overflow: hidden;
+        }
+
+        .haibao .fish {
+            padding: 0 63px;
+            display: block;
+        }
+
+        .fish {
+            float: left;
+        }
+
+        .haibao1 {
+            width: 7000px;
+            position: relative;
+            float: left;
+            overflow: hidden;
+        }
+
+        .haibao1 .fishBox {
+            width: 1100px;
+            height: 100%;
+        }
+
+        .fishBox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .neirong {
+            width: 1226px;
+            height: 100%;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .zbox {
+            width: 1226px;
+            height: 204px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .zy {
+            margin-top: 21px;
+            float: right;
+            line-height: 57.6px;
+        }
+
+        .julibox {
+            width: 6000px;
+            height: 204px;
+            position: absolute;
+        }
+
+        .julibox .juli2:nth-child(1) {
+            margin-left: 0;
+        }
+
+        .zuo {
+            float: left;
+            width: 34px;
+            height: 22px;
+            border: 1px solid rgba(200, 200, 200, 1);
+            position: relative;
+        }
+
+        .zuo i {
+            position: absolute;
+            font-size: 16px;
+            font-weight: 900;
+            top: -16px;
+            left: 7px;
+            color: rgba(180, 180, 180, 1);
+        }
+
+        .you {
+            float: left;
+            width: 34px;
+            height: 22px;
+            border: 1px solid rgba(200, 200, 200, 1);
+            position: relative;
+        }
+
+        .you i {
+            position: absolute;
+            font-size: 16px;
+            font-weight: 900;
+            top: -16px;
+            left: 10px;
+            color: rgba(180, 180, 180, 1);
+        }
+
+        .juli {
+            width: 250px;
+            height: 339px;
+            background: #f1eded;
+            border-top: 1px solid #e53935;
+            text-align: center;
+            float: left;
+            position: absolute;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .juli h4 {
+            padding-top: 54px;
+            font-size: 21px;
+            color: #ef3a3b;
+            font-weight: normal;
+        }
+
+        .juli p {
+            font-size: 15px;
+            color: rgba(0, 0, 0, .54);
+        }
+
+        .juli2 {
+            margin-left: 14px;
+            width: 296px;
+            height: 176px;
+            background: #f1eded;
+            background-color: #fff;
+            float: left;
+            text-align: center;
+        }
+
+        .juli2 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .singlepicturebookBox {
+            overflow: hidden;
+        }
+
+        .singlepicturebook {
+            margin-left: 14px;
+            width: 140px;
+            height: 140px;
+            background: #f1eded;
+            background-color: #fff;
+            float: left;
+        }
+
+        .singlepicturebookBox .singlepicturebook:nth-child(1) {
+            margin-left: 0;
+        }
+
+        .bar {
+            bottom: 32px;
+            right: 0;
+            display: none;
+            z-index: 99;
+            position: fixed;
+        }
+
+        .bar1 {
+            position: relative;
+            display: block;
+            width: 82px;
+            height: 90px;
+            margin-top: -1px;
+            background-color: #fff;
+            border: 1px solid #f5f5f5;
+            text-align: center;
+        }
+
+        .bar img {
+            width: 30px;
+            height: 30px;
+            padding-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        .bar li:hover .saoma {
+            display: block;
+        }
+
+        .commonTitle {
+            width: 1226px;
+            height: 57.6px;
+            font-size: 22px;
+            font-weight: 200;
+            line-height: 58px;
+            color: #fff;
+        }
+
+        .mainPlaceholder1Box {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            /* 水平居中 */
+            align-items: center;
+            width: 100%;
+            height: 540px;
+            position: relative;
+        }
+
+        .mainPlaceholder1 {
+            background: url('../images/main_placeholder_1.jpg');
+            background-size: contain;
+            width: 5000px;
+            height: 100%;
+            position: absolute;
+        }
+
+        .mainPlaceholder1 img {
+            width: 480px;
+            height: auto;
+        }
+
+        .imgstyle {
+            width: 100%;
+            height: 100%;
+        }
+
+        .contentDescriptionBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .contentDescription {
+            width: 1080px;
+        }
+
+        .ppbox {
+            width: 100%;
+            padding-top: 20px;
+            overflow: hidden;
+        }
+
+        .parallax {
+            transform: skew(5deg) rotate(-5deg);
+            padding: 30px 0;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .parallax__wrapper {
+            position: relative;
+            /* padding-top: 30px;
+            padding-bottom: 30px; */
+            margin-bottom: 15px;
+        }
+
+        .parallax--trials .parallax__bg {
+            background: url("../images/parallax-2.jpg") center center no-repeat;
+            background-size: cover;
+        }
+
+        .parallax__bg {
+            overflow: hidden;
+            height: 100%;
+            top: 0;
+        }
+
+        .parallax__img {
+            transform: skew(5deg) rotate(5deg) translateY(-50%);
+            width: 100%;
+            height: 200%;
+            position: absolute;
+            top: 50%;
+            left: -10%;
+        }
+
+        .parallax__img-scroller {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            will-change: transform;
+        }
+
+        .parallax--trials .parallax__content {
+            margin-top: 0;
+            margin-bottom: 0;
+            transform: none;
+            overflow: hidden;
+        }
+
+        .parallax::before,
+        .parallax::after,
+        .parallax__bg {
+            transform: translateX(-50%);
+            width: 125%;
+            position: absolute;
+            left: 50%;
+        }
+
+        .parallax::before {
+            top: 0;
+        }
+
+        .parallax::before,
+        .parallax::after {
+            content: " ";
+            background: url("../images/divider-content.png") center center repeat-x;
+            height: 30px;
+        }
+
+        .parallax::before,
+        .parallax::after {
+            box-sizing: border-box;
+        }
+
+        .parallax--trials img {
+            transform: skew(-5deg) rotate(5deg) translateY(50px);
+            margin: -80px auto 0;
+            max-width: 100%;
+        }
+
+        [class*='row-flex'],
+        .row {
+            margin: 0 auto;
+            max-width: 1140px;
+            width: 100%;
+        }
+       
+    </style>    
+    <link rel="stylesheet" href="../css/pagination.css">
+</head>
+
+<body class="bodyBox1">
+
+    <div class="top-navigator">
+        <div class="inner-navigator-div">
+            <a href="../html/memoriesList.html">
+                <span>Memories</span>
+            </a>
+        </div>
+        <div class="inner-navigator-div">
+            <a href="../html/picturebookList2.html">
+                <span>PictureBook</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="top-box">
+        <video class="top-video" src="../images/Main-Night.mp4" autoplay muted loop></video>
+        <div class="top-box-logo">
+            <img src="../images/zelda-botw-logo-small.png">
+        </div>
+        <div class="top-box-video-bar" >
+            <div>
+                <ul class="exxul">
+                    <li>
+                        <a href="../html/memoriesList.html">
+                            <span>Memories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/picturebookList2.html">
+                            <span>PictureBook</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="haibao w">
+        <div class="left"><i class="iconfont icon-zuojiantou"></i></div>
+        <div class="right"><i class="iconfont icon-youjiantou1"></i></div>
+        <div class="haibao1">
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-1.jpg" alt="">
+            </div>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-2.jpg" alt="">
+            </div>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-6.jpg" alt="">
+            </div>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-4.jpg" alt="">
+            </div>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-5.jpg" alt="">
+            </div>
+            <ul class="liList">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="contentDescriptionBox">
+        <div class="contentDescription">
+            <p style="color: #e0e0e0; font-size: large;">
+                传说中，每当邪恶的古老恶魔——灾厄盖侬降临海拉鲁王国并带来不幸时，
+                两位光之勇者——女神海利亚后代的光明公主和她的骑士，都能成功地击
+                败邪恶并带回和平。海拉鲁王国内的人们决定用他们先进的科技制造出
+                守护者和四只巨大的神兽用以协助勇者。当灾厄盖侬再度降临时，勇者
+                和公主成功地将其再次封印。<br><br>一万年过去了，海拉鲁王国曾经
+                的辉煌先进早已不复在。但在人们发掘王国内不同区域的时候却挖出了
+                应该是只存在传说中、已经废弃许久的神兽和守护者残骸。塞尔达公主
+                和骑士林克决定效仿古人的做法，用这些神兽和盖侬对决。他们指派了
+                四位英杰——鼓隆族的“达尔克尔”、卓拉族的“米法”、利特族的“力巴尔”
+                和格鲁德族的“乌尔波扎”去操控四只神兽。但是他们没有想到灾厄盖侬
+                会从城堡正下方重新复活，灾厄盖侬的奇袭导致了惨剧－四位英杰被杀、
+                城堡被毁、守护者也被邪恶力量控制反过来攻击国民，海拉鲁王国覆灭
+                了。林克在保护塞尔达时受到重伤而被带去治疗，塞尔达则孤身一人使
+                用自己的力量将盖侬压制在城堡中。<br><br>一百年后，康复的林克终
+                于重新苏醒。他在一个神秘的女性声音的带领下遇见了一位长者，长者
+                在告诉林克海拉鲁王国的遭遇后显现他的真实身份——海拉鲁国王罗姆的
+                鬼魂。国王告诉林克塞尔达已经将盖侬给压制在城堡内一百年了，体力
+                已经到达极限。林克必须在盖侬壮大自己的力量并破坏封印前拯救海拉
+                鲁王国。<br><br>在他的冒险途中，林克来到了四个部族的城市并在居
+                民的帮助下登上了神兽，成功地消灭了盖侬制造来操纵神兽的邪恶魔物并
+                得到四位英杰的能力。林克也逐渐恢复百年前的记忆并取得了消灭邪恶
+                的光明武器——大师之剑。林克之后在重新恢复的神兽的帮助下和盖侬一
+                战，并成功击倒了他。但盖侬并没有完全被消灭并解放成了最终型态，
+                林克在塞尔达的帮助下经历了一番苦战，终于成功地让塞尔达使用自己
+                最后的一点光之力将盖侬消灭，林克和塞尔达依旧为王国带来了和平，
+                两人现在得重新建立这个被邪恶侵蚀殆尽的王国。
+            </p>
+        </div>
+    </div>
+    <div class="ppbox">
+        <div class="parallax parallax--trials" data-controller="" data-img="../images/parallax-2.jpg" data-speed="2">
+            ::before
+            <div class="parallax__wrapper">
+                <div class="parallax__bg">
+                    <div class="parallax__img">
+                        <div class="parallax__img-scroller"></div>
+                    </div>
+                </div>
+                <div class="parallax__content">
+                    <div class="row">
+                        <img src="../images/parallax-character.png" alt="">
+                    </div>
+                </div>
+            </div>
+            ::after
+        </div>
+    </div>
+
+    <div class="page2">
+        <div class="w">
+            <div class="neirong w">
+                <!-- commonTitle s -->
+                <div class="commonTitle">
+                    回忆
+                    <div class="zy">
+                        <span class="zuo"><i class="iconfont icon-zuojiantou"></i></span>
+                        <span class="you"><i class="iconfont icon-youjiantou"></i></span>
+                    </div>
+                </div>
+                <div class="zbox">
+                    <div class="julibox">
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_000.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_001.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_002.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_003.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_004.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_005.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_006.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="juli2">
+                            <a href="memoriesList.html">
+                                <img class="imgstyle" src="../images/memories/pict_007.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commonTitle">
+                    图鉴
+                </div>
+                <div class="singlepicturebookBox">
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=1">
+                            <img src="../images/picturebook/horse.png" width="140px" height="140px" alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=70">
+                            <img src="../images/picturebook/smotherwing_butterfly.png" width="140px" height="140px"
+                                alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=218">
+                            <img src="../images/picturebook/ancient_short_sword.png" width="140px" height="140px" alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=87">
+                            <img src="../images/picturebook/electric_chuchu.png" width="140px" height="140px" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="mainPlaceholder1Box">
+                    <div class="mainPlaceholder1">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bar">
+        <ul>
+            <li>
+                <div class="bar1 bar6">
+                    <img src="https://i1.mifile.cn/f/i/2018/home/totop_hover.png" alt="">
+                    <p>回顶部</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+
+    window.addEventListener('scroll', function () {
+        var eleBar = document.querySelector('.bar');
+        var eleNav = document.querySelector(".top-navigator")
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition >= 144) {
+            eleNav.style.display = 'block';
+        } else {
+            eleNav.style.display = 'none';
+        }
+
+        if (scrollPosition >= 460) { // 滚动超过200像素时显示元素
+            eleBar.style.display = 'block';
+        } else {
+            eleBar.style.display = 'none';
+        }
+    });
+
+    //平滑滚动到顶部
+    $(".bar6").click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+    })
+
+    $(function () {
+        //刚开始设置一个index，index为图片的索引值
+        var index = 0;
+        //当图片索引为0时,显示对应的图片,其他的隐藏
+        $(".fish").hide();
+        $(".fish").eq(index).show();
+        //图片对应的下面的小圆圈设置背景颜色
+        $(".liList li").eq(index).css("background-color", "black");
+        $("baby").css("background-color", "black");
+        // $(".bodyBox").css("background", `url(${$(".fish").eq(index).attr("src")})`);
+        //设置一个定时器
+        timer1 = setInterval(function () {
+            var imgObj = $(".fish");
+            //index的值加1，如果index值大于3就等于0
+            index++;
+            if (index > 4) {
+                index = 0;
+            }
+            //设置对应之外的小圆圈背景颜色
+            $(".liList li").css("background-color", "rgba(100,100,100,0)");
+            //设置对应索引的小圆圈背景颜色
+            $(".liList li").eq(index).css("background-color", "black");
+            // $(".bodyBox").css("background", `url(${$(".fish").eq(index).attr("src")})`);
+            imgObj.fadeOut(500),
+                imgObj.eq(index).fadeIn(1000);
+        }, 3000);
+        //鼠标悬停清除定时器
+        $(".fish").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".left").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".right").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".liList li ").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        //鼠标移走重启定时器
+        $(".fish,.left,.right").mouseleave(function () {
+            timer1 = setInterval(function () {
+                var imgObj = $(".fish");
+                index++;
+                if (index > 4) {
+                    index = 0;
+                }
+                imgObj.fadeOut(500);
+                imgObj.eq(index).fadeIn(1000);
+                $(".liList li").css("background-color", "rgba(0,0,0,0)");
+                $(".liList li").eq(index).css("background-color", "black");
+            }, 3000);
+        });
+        //点击下一张
+        $(".right").click(function () {
+            index += 1;
+            if (index > 4) {
+                index = 0;
+            }
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+            $(".liList li").css("background-color", "lightskyblue");
+            $(".liList li").eq(index).css("background-color", "white");
+        });
+        //点击上一张
+        $(".left").click(function () {
+            index -= 1;
+            if (index < 0) {
+                index = 4;
+            }
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+            $(".liList li").css("background-color", "lightskyblue");
+            $(".liList li").eq(index).css("background-color", "white");
+        });
+        //点击下面的小圆圈显示对应的图片
+        $(".liList li").click(function () {
+            //获得被点击的li元素的索引值
+            index = $(".liList li").index(this);
+            $(".liList li").css("background-color", "rgba(100,100,100,0)");
+            $(".liList li").eq(index).css("background-color", "black");
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+        });
+    });
+
+    var num = $('.juli2').size()
+    var index = 0;
+    $(".zuo").click(function () {
+        index--;
+        if (index <= 0) {
+            index = 0;
+            $(".you").css({ color: "gray" })
+        }
+        $(".julibox").stop().animate({ left: (index * -310) }, 1000, function () {
+        })
+    })
+    var timer = null;
+    timer = setInterval(function () {
+        index++;
+        if (index == num - 4) {
+            $(".you").css({ color: "gray" });
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        } else if (index > num - 4) {
+            index = 0;
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+        else {
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+    }, 4000)
+    $(".you").click(function () {
+        index++;
+        if (index >= num - 4) {
+            index = num - 4;
+            $(".you").css({ color: "gray" });
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        } else {
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+    })
+
+    //林克版本运动
+    // let links = 0
+    // let linkTimer = setInterval(() => {
+    //     if(links * 10 >= 5000){
+    //         links = 0
+    //         $('.mainPlaceholder1').stop().animate({ left: 0 }, 1000,)
+    //     }
+    //     links += 1
+    //     console.log(links)
+    //     $('.mainPlaceholder1').stop().animate({ left: (links * -10) }, 1000,)
+    // }, 100)
+
+</script>
+
+</html>

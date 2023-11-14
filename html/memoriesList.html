@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset1.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2306472_s8tp7k2au.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <!-- <script src="../js/request.js"></script> -->
+    <!-- <script src="../js/ajax.js"></script> -->
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <!-- <script src="../js/cookie.js"></script> -->
+    <!-- <script src="../js/page.js"></script> -->
+    <script src="../js/jquery.pagination.js"></script>
+    <style>
+        .page {
+            width: 100%;
+        }
+
+        .bodyBox1 {
+            background: url("../images/main_background.jpg");
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .head {
+            height: 120px;
+            background: url(../images/head.jpg) no-repeat 50%;
+            background-size: auto 120px;
+        }
+
+        .guildout {
+            background: #333;
+            width: 100%;
+        }
+
+        .guild {
+            height: 40px;
+            /* background: #333; */
+        }
+
+        .guildf {
+            width: 770.13px;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+        }
+
+        .guildf .gui {
+            color: #b0b0b0;
+            line-height: 40px;
+            display: inline-block;
+        }
+
+        .guildf span {
+            margin: 0 0.3em;
+            color: #424242;
+        }
+
+        .guildshop {
+            width: 120px;
+            height: 40px;
+            margin-left: 15px;
+            float: right;
+            position: relative;
+        }
+
+        .guild2 {
+            float: right;
+            line-height: 40px;
+            color: #b0b0b0;
+        }
+
+        .guild21 {
+            padding: 0 5px;
+        }
+
+        .guild22 {
+            padding: 0 10px;
+        }
+
+        .find {
+            width: 1226px;
+            height: 100px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .find0 {
+            width: 55px;
+            height: 55px;
+            margin-top: 22px;
+            float: left;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .find1 {
+            width: 55px;
+            height: 55px;
+            background: url("../images/zelda-botw-logo-small.png") #ff6700 no-repeat center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: .3s;
+        }
+
+        .find0:hover .find1 {
+            left: 55px;
+            top: 0;
+        }
+
+        .find2 {
+            width: 55px;
+            height: 55px;
+            background: url(../images/mi-home.png) #ff6700 no-repeat center;
+            position: absolute;
+            top: 0;
+            left: -55px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .find0:hover .find2 {
+            top: 0;
+            left: 0;
+        }
+
+        .exx {
+            width: 1137px;
+            height: 88px;
+            padding: 12px 0 0 30px;
+            /* background-color: violet; */
+            float: left;
+        }
+
+        .kong {
+            float: left;
+            width: 127px;
+            height: 88px;
+            padding-right: 15px;
+            background-color: #fff;
+        }
+
+        .exx li {
+            line-height: 88px;
+            float: left;
+            font-size: 16px;
+
+        }
+
+        /* .exx img {
+            display: block;
+            width: 1226px;
+            height: 200px;
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 0;
+            transition: .3s;
+            z-index: 8;
+        } */
+
+        .exx .shopbox {
+            display: block;
+            width: 1226px;
+            height: 250px;
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            height: 0;
+            overflow: hidden;
+            transition: .4s;
+            z-index: 101;
+        }
+
+        .shopli {
+            width: 200px;
+            text-align: center;
+            float: left;
+            /* border-right: 1px solid gray; */
+        }
+
+        .shopliname {
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        .shopliprice {
+            line-height: 30px;
+            font-size: 16px;
+            color: #ff6700;
+        }
+
+        .exx .shopbox img {
+            width: 180px;
+            height: 123px;
+        }
+
+        .exx li:hover .shopbox {
+            background-color: #fff;
+            height: 250px;
+        }
+
+        .exx li span {
+            padding: 26px 10px 38px 10px;
+        }
+
+        .exx li span:hover {
+            color: #ff6700;
+        }
+
+        .suoyin {
+            float: right;
+            height: 50px;
+            width: 297px;
+            margin-top: 13px;
+        }
+
+        .suoyin input {
+            margin: 0;
+        }
+
+        .suoyin .text {
+            border: 1px solid #e0e0e0;
+            outline: 0;
+            width: 223px;
+            height: 48px;
+            padding: 0 10px;
+            float: left;
+        }
+
+        .suoyin .submit {
+            border: 1px solid #e0e0e0;
+            outline: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            line-height: 24px;
+            background: #fff;
+            color: #616161;
+            float: left;
+            background: url(../images/big.PNG)no-repeat center center;
+            background-size: 40%;
+        }
+
+        .guilds {
+            /* width: 1226px; */
+            font-size: 12px;
+            line-height: 40px;
+            color: #757575;
+        }
+
+        .container {
+            width: 1226px;
+            margin: auto;
+        }
+
+        .container a:hover {
+            color: #ff6700;
+        }
+
+        .shopingBox {
+            width: 1226px;
+            margin: auto;
+        }
+
+        .choose {
+            padding-top: 20px;
+        }
+
+        .chBtn {
+            width: 500px;
+            height: 50px;
+            /* background-color: rgba(220, 220, 200, .8); */
+            color: gray;
+        }
+
+        .chBtn li {
+            float: left;
+            padding: 0 30px;
+            font-size: 14px;
+            transition: 0.6s;
+        }
+
+        .chBtn span {
+            float: left;
+            color: rgba(200, 200, 200, 0.5);
+        }
+
+        .chBtn li:hover {
+            color: #ff6700;
+        }
+
+        .lists {
+            width: 1240px;
+            /* min-height: 450px; */
+            overflow: hidden;
+        }
+
+        .goods {
+            width: 296px;
+            /* height: 390px; */
+            text-align: center;
+            color: rgb(0, 246, 255);
+            float: left;
+            margin-bottom: 14px;
+            margin-right: 14px;
+        }
+
+        .goods .big {
+            width: 100%;
+            height: 180px;
+            margin-top: 47px;
+        }
+
+        .text1 {
+            /* margin-top: 20px; */
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 12px;
+        }
+
+        .M-box {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .waibox {
+            width: 100%;
+            text-align: center;
+        }
+
+        .last {
+            width: 1226px;
+            height: 300px;
+        }
+
+        .searve {
+            width: 1226px;
+            height: 25px;
+            padding: 27px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .svlist {
+
+            text-align: center;
+            font-size: 16px;
+            color: #616161;
+        }
+
+        .svlist li {
+            float: left;
+            width: 19.8%;
+            border-left: 1px solid #e0e0e0;
+            line-height: 30px;
+            position: relative;
+            transition: all .2s;
+        }
+
+        .svlist li :hover {
+            color: #ff6700;
+        }
+
+        .svlist li i {
+            font-size: 30px;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            display: inline-block;
+            left: 45px;
+            top: 2px;
+        }
+
+        .svlist .icon-7tiantuihuanhuo {
+            font-size: 20px;
+            left: 40px;
+            top: 0px;
+        }
+
+        .svlist .icon-15tianwuliyoutuihuo {
+            font-size: 24px;
+            left: 43px;
+            top: 0px;
+        }
+
+        .svlist .icon-icon-test {
+            top: 0px;
+            left: 53px;
+        }
+
+        .svlist .icon-icon_dizhi {
+            top: 0;
+            left: 30px;
+        }
+
+        .wai {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .footer {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .footlis {
+            width: 160px;
+            float: left;
+        }
+
+        .footer dt {
+            margin: -1px 0 26px;
+            font-size: 14px;
+            line-height: 1.25;
+            color: #424242;
+        }
+
+        .footer dd {
+            margin: 10px 0 0;
+            font-size: 12px;
+            color: #757575;
+        }
+
+        .concat {
+            width: 251px;
+            float: right;
+            /* background-color: orange; */
+            text-align: center;
+
+        }
+
+        .PhoneNumber {
+            color: #ff6700;
+            font-size: 22px;
+            padding-bottom: 5px;
+        }
+
+        .yuyue {
+            line-height: 28px;
+            border: #ff6700 solid 1px;
+            width: 118px;
+            height: 28px;
+            margin: auto;
+            color: #ff6700;
+
+        }
+
+        .huafei {
+            color: #616161;
+            line-height: 20px;
+        }
+
+        .abXm {
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 20px;
+            position: relative;
+        }
+
+
+        .abXm i {
+            font-size: 20px;
+            margin: 0 2px;
+        }
+
+        .abXm i:hover {
+            color: #ff6700;
+        }
+
+        .abXm img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #ewm {
+            /* width: 100px;
+            height: 100px; */
+            position: absolute;
+            top: 20px;
+            left: 110px;
+            overflow: hidden;
+            display: none;
+            z-index: 100;
+        }
+
+
+        .abXm .icon-weixin:hover #ewm {
+            display: block;
+        }
+
+        .lastfoot {
+            width: 100%;
+            height: 240px;
+            background-color: #fafafa;
+        }
+
+        .lf {
+            padding: 30px 0;
+        }
+
+        .zuologo {
+            width: 67px;
+            float: left;
+        }
+
+        .mibox {
+            width: 55px;
+            height: 55px;
+            background: url(../images/mi-logo.png) #ff6700 no-repeat center;
+        }
+
+        .textbox {
+            float: left;
+        }
+
+        .textP1 {
+            color: #757575;
+        }
+
+        .textP2 {
+            color: #b0b0b0;
+        }
+
+        .imgBox img {
+            margin-top: 10px;
+            width: auto;
+            height: 28px;
+        }
+
+        .imgBox .safeFuwu {
+            margin-top: 0;
+            width: 106px;
+            height: 40px;
+        }
+
+        .play i {
+            font-size: 14px;
+            /* width: 20px;
+            height: 20px; */
+        }
+
+        .index_logo {
+            margin-left: 8px;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body class="bodyBox1">
+
+    <div class="index_logo">
+        <a href="index.html">
+            <img src="../images/zelda-botw-logo-small.png">
+        </a>
+    </div>
+
+    <div class="guilds">
+        <div class="w">
+            <div class="shopingBox">
+                <div class="choose">
+
+                    <ul class="lists">
+                    </ul>
+                    <div class="waibox">
+                        <div class="M-box"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+</body>
+<script>
+
+    var search = location.search;
+    if (search) {
+        var str = search.split("?")[1];
+        var sou = decodeURIComponent(decodeURIComponent(str));
+        $(".text").val(sou);
+    }
+    var pFlag = false;
+    var key = sou ? sou : "";   // ""  可以搜索全部数据
+    var orderCol = "id"; // 默认排序列名 id
+    var orderType = "asc"; // 默认排序方式  asc
+    var showNum = "8";    // 每页显示多少条
+    var pageIndex = 1;   // 默认显示第一页
+
+    getData();
+    getData1();
+
+
+    function getData() {
+
+        var key = "";   // ""  可以搜索全部数据
+        var orderCol = "id"; // 默认排序列名 id
+        var orderType = "asc"; // 默认排序方式  asc
+        var showNum = "6";    // 每页显示多少条
+        var pageIndex = 1;   // 默认显示第一页
+
+
+
+        
+        // searchMiGoods({ key, orderCol, orderType, pageIndex, showNum }).then(data => {
+        //     var { maxPage, list, count } = data;
+
+            // pageIndex = pageIndex > maxPage ? maxPage : pageIndex;
+            // $('.M-box').pagination({
+            //     totalData: count,   // count
+            //     showData: showNum,     //showNum
+            //     current: pageIndex,
+            //     mode: "fixed",
+            //     count: 4,         //showPage
+
+            //     prevContent: "<",
+            //     nextContent: ">",
+
+            //     // 首页尾页是否开启  和  规定内容
+            //     coping: true,
+            //     homePage: "首页",
+            //     endPage: "尾页",
+
+            //     // 跳转是否开启  和  规定内容
+            //     jump: true,
+            //     jumpBtn: "go",
+
+            //     callback: function (api) {
+            //         console.log(api.getCurrent());  // 获取当前页
+            //         var index = api.getCurrent();
+            //         pageIndex = index;
+            //         getData();
+            //     }
+            // });
+            // console.log(list);
+
+            // var html = "";
+            // list.forEach(function (goods) {
+            //     var { id, name, url } = goods
+            //     html += `<div class="shopli">
+            //             <div class="shopImgbox">
+            //                 <img src="${url}"
+            //                     alt="">
+            //             </div>
+            //             <p class="shopliname">${name}</p>
+            //             </div>`;
+            // })
+            // debugger
+            // $(".shopbox").html(html);
+        // })
+    }
+
+    $(".submit").click(function () {
+        key = $(".text").val();
+        console.log(key);
+        getData1();
+    })
+    $(".price").click(function () {
+        if (pFlag) {
+            $(".price").css({ color: "#ff6700" }).siblings().css({ color: " rgba(200, 200, 200, 0.5)" });
+            $('.price').text('价格↓');
+            orderCol = 'goodsPrice';
+            orderType = 'desc';
+            pFlag = false;
+            getData1();
+            return false;
+        }
+        $(".price").css({ color: "#ff6700" }).siblings().css({ color: " rgba(200, 200, 200, 0.5)" })
+        $('.price').text('价格↑');
+        orderCol = 'goodsPrice';
+        orderType = 'asc';
+        pFlag = true;
+        getData1();
+    })
+    $(".normal").click(function () {
+        $(".normal").css({ color: "#ff6700" }).siblings().css({ color: " rgba(200, 200, 200, 0.5)" })
+        orderCol = 'id';
+        orderType = 'asc';
+        getData1();
+    })
+
+
+    function getData1() {
+        // searchMiGoods3({ key, orderCol, orderType, pageIndex, showNum }).then(data => {
+            let list = [
+            {
+                "id": 1,
+                "name": "回忆1",
+                "url": "../images/memories/pict_000.jpg"
+            },
+            {
+                "id": 2,
+                "name": "回忆2",
+                "url": "../images/memories/pict_001.jpg"
+            },
+            {
+                "id": 3,
+                "name": "回忆3",
+                "url": "../images/memories/pict_002.jpg"
+            },
+            {
+                "id": 4,
+                "name": "回忆4",
+                "url": "../images/memories/pict_003.jpg"
+            },
+            {
+                "id": 5,
+                "name": "回忆5",
+                "url": "../images/memories/pict_004.jpg"
+            },
+            {
+                "id": 6,
+                "name": "回忆6",
+                "url": "../images/memories/pict_005.jpg"
+            },
+            {
+                "id": 7,
+                "name": "回忆7",
+                "url": "../images/memories/pict_006.jpg"
+            },
+            {
+                "id": 8,
+                "name": "回忆8",
+                "url": "../images/memories/pict_007.jpg"
+            },
+            {
+                "id": 9,
+                "name": "回忆9",
+                "url": "../images/memories/pict_008.jpg"
+            },
+            {
+                "id": 10,
+                "name": "回忆10",
+                "url": "../images/memories/pict_009.jpg"
+            },
+            {
+                "id": 11,
+                "name": "回忆11",
+                "url": "../images/memories/pict_010.jpg"
+            },
+            {
+                "id": 12,
+                "name": "回忆12",
+                "url": "../images/memories/pict_011.jpg"
+            },
+            {
+                "id": 13,
+                "name": "回忆13",
+                "url": "../images/memories/pict_012.jpg"
+            },
+            {
+                "id": 14,
+                "name": "回忆14",
+                "url": "../images/memories/pict_013.jpg"
+            },
+        ]
+            // var { maxPage, list, count } = data;
+            if (list) {
+                // pageIndex = pageIndex > maxPage ? maxPage : pageIndex;
+                // $('.M-box').pagination({
+                //     totalData: 14,   // count
+                //     showData: showNum,     //showNum
+                //     current: 1,
+                //     mode: "fixed",
+                //     count: 4,         //showPage
+
+                //     prevContent: "<",
+                //     nextContent: ">",
+
+                //     // 首页尾页是否开启  和  规定内容
+                //     coping: true,
+                //     homePage: "首页",
+                //     endPage: "尾页",
+
+                //     // 跳转是否开启  和  规定内容
+                //     jump: true,
+                //     jumpBtn: "go",
+
+                //     callback: function (api) {
+                //         console.log(api.getCurrent());  // 获取当前页
+                //         var index = api.getCurrent();
+                //         pageIndex = index;
+                //         getData1();
+                //     }
+                // });
+                // console.log(list);
+
+                var html = "";
+                list.forEach(function (memories) {
+                    var { id, name,url } = memories
+                    html += `<li class="goods">
+                        <a href="./memories.html?gid=${id}">
+                        <img class="big"
+                            src="${url}"
+                            alt="">
+                        <p class="text1">${name}</p>
+                        </a>
+                    </li>`;
+                })
+                $(".lists").html(html);
+            } else {
+                $(".lists").html('');
+            }
+
+        // })
+    }
+    var cookie = document.cookie;
+    if (cookie) {
+        var logUser = getCookie("logUser");
+        if (logUser) {
+            console.log("welcome");
+            $(".guild2").html(`欢迎您,${logUser} <button onclick="exit()">退出</button>`);
+        }
+    }
+    function exit() {
+        delCookie("logUser");
+        location.reload();
+    }
+
+</script>
+
+</html>
