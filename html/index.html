@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/reset1.css">
+    <link rel="stylesheet" href="../css/pic-modal.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_2306472_s8tp7k2au.css">
     <script src="../js/ajax.js"></script>
     <script src="../js/jquery-1.10.1.min.js"></script>
-    <!-- <link rel="stylesheet" href="../css/media-nav.css"> -->
     <style>
 
         @font-face {
@@ -66,7 +66,7 @@
             top: 0;
             right: 0;
             width: auto;
-            background-color: transparent; /* 蓝色背景 */
+            background-color: transparent;
         }
 
         .top-box-logo {
@@ -83,21 +83,46 @@
             object-fit: cover;
         }
 
+        .top-video-divider-blue {
+            width: 100%;
+            height: 16px;
+            background-image: url('../images/divider-blue.svg');
+            background-repeat: repeat-x;
+            background-size: contain;
+        }
+
         .top-navigator {
             z-index: 99;
-            display: none;
             width: 100%;
             height: 80px;
             position: fixed;
-            background-color: aqua;
             text-align: center;
             justify-content: center;
+            background: linear-gradient(to top, #170606cc, transparent), url("../images/main_background.jpg");
+            transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+            opacity: 0;
         }
 
-        .top-navigator .inner-navigator-div {
-            letter-spacing: 2px;
+        .top-navigator .top-div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .top-navigator ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .top-navigator ul li {
+            margin: 0 12px;
+            letter-spacing: 1px;
             font-size: 32px;
             display: inline-block;
+            font-family: "MedulaOne-Regular"
         }
 
         .top-navigator span {
@@ -106,6 +131,17 @@
 
         .top-navigator span:hover {
             color: #B99F65;
+        }
+
+        .divider-1 {
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+            margin-top: 80px;
+            width: 100%;
+            height: 1px;
+            position: fixed;
+            background: #B99F65;
         }
 
         .exxul {
@@ -292,6 +328,26 @@
             color: rgba(180, 180, 180, 1);
         }
 
+        .morezy {
+            margin-top: 21px;
+            float: right;
+            line-height: 57.6px;
+        }
+
+        .more {
+            width: 120px;
+            float: left;
+            position: relative;
+        }
+
+        .more a {
+            position: absolute;
+            font-size: 12px;
+            top: -16px;
+            right: 0;
+            color: white;
+        }
+
         .juli {
             width: 250px;
             height: 339px;
@@ -351,14 +407,14 @@
         .bar {
             bottom: 32px;
             right: 0;
-            display: none;
             z-index: 99;
             position: fixed;
+            transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+            opacity: 0;
         }
 
         .bar1 {
             position: relative;
-            display: block;
             width: 82px;
             height: 90px;
             margin-top: -1px;
@@ -387,30 +443,6 @@
             color: #fff;
         }
 
-        .mainPlaceholder1Box {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            /* 水平居中 */
-            align-items: center;
-            width: 100%;
-            height: 540px;
-            position: relative;
-        }
-
-        .mainPlaceholder1 {
-            background: url('../images/main_placeholder_1.jpg');
-            background-size: contain;
-            width: 5000px;
-            height: 100%;
-            position: absolute;
-        }
-
-        .mainPlaceholder1 img {
-            width: 480px;
-            height: auto;
-        }
-
         .imgstyle {
             width: 100%;
             height: 100%;
@@ -425,7 +457,8 @@
         }
 
         .contentDescription {
-            width: 1080px;
+            display: flex; 
+            justify-content: center; 
         }
 
         .ppbox {
@@ -523,6 +556,92 @@
             margin: 0 auto;
             max-width: 1140px;
             width: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .content-container-1 {
+            display: flex;
+        }
+
+        .content-container-1 .cc1-left {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .content-container-1 .cc1-right {
+            flex: 1;
+            position: relative;
+            display: flex;
+            padding-left: 24px;
+        }
+
+        .content-container-1 .cc1-right .cc1-text-container {
+            margin: auto 0;
+        }
+
+        .content-container-1 .cc1-left .cc1-image-container {
+            float: right;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .content-container-1 .cc1-left .cc1-image-container img {
+            float: right;
+            max-width: 60%;
+            padding-top: 36px;
+            padding-bottom: 36px;
+            padding-right: 24px;
+            display: block;
+            object-fit: contain;
+            transform: rotate(-5deg);
+        }
+
+        .content-container-2 {
+            display: flex;
+        }
+
+        .content-container-2 .cc2-right {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .content-container-2 .cc2-left {
+            flex: 1;
+            position: relative;
+            display: flex;
+            padding-right: 24px;
+        }
+
+        .content-container-2 .cc2-left .cc2-text-container {
+            position: absolute;
+            padding-top: 10%;
+            right: 0px;
+            margin: auto 0;
+        }
+
+        .content-container-2 .cc2-right .cc2-image-container {
+            float: left;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .content-container-2 .cc2-right .cc2-image-container img {
+            float: left;
+            max-width: 60%;
+            padding-top: 36px;
+            padding-bottom: 36px;
+            padding-left: 24px;
+            display: block;
+            object-fit: contain;
+            transform: rotate(5deg);
+        }
+
+        .content-container-3-image-container {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
        
     </style>    
@@ -532,23 +651,29 @@
 <body class="bodyBox1">
 
     <div class="top-navigator">
-        <div class="inner-navigator-div">
-            <a href="../html/memoriesList.html">
-                <span>Memories</span>
-            </a>
-        </div>
-        <div class="inner-navigator-div">
-            <a href="../html/picturebookList2.html">
-                <span>PictureBook</span>
-            </a>
+        <div class="top-div">
+            <ul>
+                <li>
+                    <a href="../html/memoriesList.html">
+                        <span>Memories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../html/picturebookList2.html">
+                        <span>PictureBook</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
+    <div class="divider-1"></div>
 
     <div class="top-box">
         <video class="top-video" src="../images/Main-Night.mp4" autoplay muted loop></video>
         <div class="top-box-logo">
-            <img src="../images/zelda-botw-logo-small.png">
+            <img src="../images/zelda-botw-logo.png" style="width: 182px;height: 147px;">
         </div>
+        <div class="top-video-divider-blue"></div>
         <div class="top-box-video-bar" >
             <div>
                 <ul class="exxul">
@@ -598,38 +723,36 @@
 
     <br><br><br><br>
 
-    <div class="contentDescriptionBox">
-        <div class="contentDescription">
-            <p style="color: #e0e0e0; font-size: large;">
-                传说中，每当邪恶的古老恶魔——灾厄盖侬降临海拉鲁王国并带来不幸时，
-                两位光之勇者——女神海利亚后代的光明公主和她的骑士，都能成功地击
-                败邪恶并带回和平。海拉鲁王国内的人们决定用他们先进的科技制造出
-                守护者和四只巨大的神兽用以协助勇者。当灾厄盖侬再度降临时，勇者
-                和公主成功地将其再次封印。<br><br>一万年过去了，海拉鲁王国曾经
-                的辉煌先进早已不复在。但在人们发掘王国内不同区域的时候却挖出了
-                应该是只存在传说中、已经废弃许久的神兽和守护者残骸。塞尔达公主
-                和骑士林克决定效仿古人的做法，用这些神兽和盖侬对决。他们指派了
-                四位英杰——鼓隆族的“达尔克尔”、卓拉族的“米法”、利特族的“力巴尔”
-                和格鲁德族的“乌尔波扎”去操控四只神兽。但是他们没有想到灾厄盖侬
-                会从城堡正下方重新复活，灾厄盖侬的奇袭导致了惨剧－四位英杰被杀、
-                城堡被毁、守护者也被邪恶力量控制反过来攻击国民，海拉鲁王国覆灭
-                了。林克在保护塞尔达时受到重伤而被带去治疗，塞尔达则孤身一人使
-                用自己的力量将盖侬压制在城堡中。<br><br>一百年后，康复的林克终
-                于重新苏醒。他在一个神秘的女性声音的带领下遇见了一位长者，长者
-                在告诉林克海拉鲁王国的遭遇后显现他的真实身份——海拉鲁国王罗姆的
-                鬼魂。国王告诉林克塞尔达已经将盖侬给压制在城堡内一百年了，体力
-                已经到达极限。林克必须在盖侬壮大自己的力量并破坏封印前拯救海拉
-                鲁王国。<br><br>在他的冒险途中，林克来到了四个部族的城市并在居
-                民的帮助下登上了神兽，成功地消灭了盖侬制造来操纵神兽的邪恶魔物并
-                得到四位英杰的能力。林克也逐渐恢复百年前的记忆并取得了消灭邪恶
-                的光明武器——大师之剑。林克之后在重新恢复的神兽的帮助下和盖侬一
-                战，并成功击倒了他。但盖侬并没有完全被消灭并解放成了最终型态，
-                林克在塞尔达的帮助下经历了一番苦战，终于成功地让塞尔达使用自己
-                最后的一点光之力将盖侬消灭，林克和塞尔达依旧为王国带来了和平，
-                两人现在得重新建立这个被邪恶侵蚀殆尽的王国。
-            </p>
+    <div class="content-container-1">
+        <div class="cc1-left">
+            <div class="cc1-image-container">
+                <img src="../images/story_desc.png" onclick="showModal('../images/story_desc.png')">
+            </div>
+        </div>
+        <div class="cc1-right">
+            <div class="cc1-text-container">
+                <p style="color: #e0e0e0; font-size: large;text-indent:2em;max-width: 480px;">
+                    传说中，每当邪恶的古老恶魔——灾厄盖侬降临海拉鲁王国并带来不幸时，两位光之勇者——女神海利亚后代的光明公主和她的骑士，都能成功地击败邪恶并带回和平。海拉鲁王国内的人们决定用他们先进的科技制造出守护者和四只巨大的神兽用以协助勇者。当灾厄盖侬再度降临时，勇者和公主成功地将其再次封印。
+                </p>
+            </div>
         </div>
     </div>
+
+    <div class="content-container-2">
+        <div class="cc2-left">
+            <div class="cc2-text-container">
+                <p style="color: #e0e0e0; font-size: large;text-indent:2em;max-width: 480px;">
+                    一万年过去了，海拉鲁王国曾经的辉煌先进早已不复在。但在人们发掘王国内不同区域的时候却挖出了应该是只存在传说中、已经废弃许久的神兽和守护者残骸。塞尔达公主和骑士林克决定效仿古人的做法，用这些神兽和盖侬对决。他们指派了四位英杰——鼓隆族的“达尔克尔”、卓拉族的“米法”、利特族的“力巴尔”和格鲁德族的“乌尔波扎”去操控四只神兽。
+                </p>
+            </div>
+        </div>
+        <div class="cc2-right">
+            <div class="cc2-image-container">
+                <img src="../images/Picture_of_the_Champions.webp" onclick="showModal('../images/Picture_of_the_Champions.webp')">
+            </div>
+        </div>
+    </div>
+
     <div class="ppbox">
         <div class="parallax parallax--trials" data-controller="" data-img="../images/parallax-2.jpg" data-speed="2">
             ::before
@@ -649,10 +772,31 @@
         </div>
     </div>
 
+    <div style="text-align: center;">
+        <img src="../images/Isolated-HD-Pictures.png">
+        <div style="display: flex; justify-content: center; margin-top: 48px;">
+            <p style="color: #e0e0e0; font-size: large; max-width: 700px; text-align: center;text-indent:2em;">
+                但是他们没有想到灾厄盖侬会从城堡正下方重新复活，灾厄盖侬的奇袭导致了惨剧－四位英杰被杀、城堡被毁、守护者也被邪恶力量控制反过来攻击国民，海拉鲁王国覆灭了。林克在保护塞尔达时受到重伤而被带去治疗，塞尔达则孤身一人使用自己的力量将盖侬压制在城堡中。
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+        <div class="content-container-3-image-container">
+            <img src="../images/link_epona.png" style="width: 50%; height: auto;">  
+        </div>
+        <div class="contentDescriptionBox" style="margin-top: 12px;">
+            <div class="contentDescription">
+                <p style="color: #e0e0e0; font-size: large; max-width: 900px;">
+                    一百年后，康复的林克终于重新苏醒。他在一个神秘的女性声音的带领下遇见了一位长者，长者在告诉林克海拉鲁王国的遭遇后显现他的真实身份——海拉鲁国王罗姆的灵魂。国王告诉林克塞尔达已经将盖侬给压制在城堡内一百年了，体力已经到达极限。林克必须在盖侬壮大自己的力量并破坏封印前拯救海拉鲁王国。
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div class="page2">
         <div class="w">
             <div class="neirong w">
-                <!-- commonTitle s -->
                 <div class="commonTitle">
                     回忆
                     <div class="zy">
@@ -707,41 +851,69 @@
 
                 <div class="commonTitle">
                     图鉴
+                    <div class="morezy">
+                        <span class="more">
+                            <a href="picturebookList2.html" >更多</a>
+                        </span>
+                    </div>
                 </div>
                 <div class="singlepicturebookBox">
                     <div class="singlepicturebook">
-                        <a href="singlePicturebook.html?gid=1">
-                            <img src="../images/picturebook/horse.png" width="140px" height="140px" alt="">
+                        <a href="singlePicturebook.html?gid=199&category=material">
+                            <img src="../images/picturebook/silent_princess.png" width="140px" height="140px" alt="">
                         </a>
                     </div>
 
                     <div class="singlepicturebook">
-                        <a href="singlePicturebook.html?gid=70">
-                            <img src="../images/picturebook/smotherwing_butterfly.png" width="140px" height="140px"
+                        <a href="singlePicturebook.html?gid=1&category=creature">
+                            <img src="../images/picturebook/horse.png" width="140px" height="140px"
                                 alt="">
                         </a>
                     </div>
 
                     <div class="singlepicturebook">
-                        <a href="singlePicturebook.html?gid=218">
+                        <a href="singlePicturebook.html?gid=218&category=equipment">
                             <img src="../images/picturebook/ancient_short_sword.png" width="140px" height="140px" alt="">
                         </a>
                     </div>
 
                     <div class="singlepicturebook">
-                        <a href="singlePicturebook.html?gid=87">
+                        <a href="singlePicturebook.html?gid=87&category=monster">
                             <img src="../images/picturebook/electric_chuchu.png" width="140px" height="140px" alt="">
                         </a>
                     </div>
-                </div>
-                <div class="mainPlaceholder1Box">
-                    <div class="mainPlaceholder1">
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=178&category=material">
+                            <img src="../images/picturebook/big_hearty_truffle.png" width="140px" height="140px" alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=81&category=creature">
+                            <img src="../images/picturebook/hightail_lizard.png" width="140px" height="140px"
+                                alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=237&category=equipment">
+                            <img src="../images/picturebook/meteor_rod.png" width="140px" height="140px" alt="">
+                        </a>
+                    </div>
+
+                    <div class="singlepicturebook">
+                        <a href="singlePicturebook.html?gid=129&category=monster">
+                            <img src="../images/picturebook/decayed_guardian.png" width="140px" height="140px" alt="">
+                        </a>
                     </div>
                 </div>
-
             </div>
-
         </div>
+    </div>
+
+    <div>
+        <img src="../images/main_background5.jpg" style="width: 100%; height: auto; margin-top: 56px;" >
     </div>
 
     <div class="bar">
@@ -754,25 +926,55 @@
             </li>
         </ul>
     </div>
+
+    <div class="modal-overlay-1" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-1" id="modalContent">
+            <img id="modalImage" src="" alt="Modal Image">
+        </div>
+    </div>
 </body>
 
 <script>
 
     window.addEventListener('scroll', function () {
         var eleBar = document.querySelector('.bar');
-        var eleNav = document.querySelector(".top-navigator")
+        var eleNav = document.querySelector(".top-navigator");
+        var eleD1 = document.querySelector(".divider-1");
+        var eleStoryDescPic1 = document.querySelector(".cc1-image-container");
+        var eleStoryDescPic2 = document.querySelector(".cc2-image-container");
+        var eleStoryHeroPic1 = document.querySelector(".row");
+        var eleStyorDescPic3 = document.querySelector(".content-container-3-image-container");
         var scrollPosition = window.scrollY;
 
         if (scrollPosition >= 144) {
-            eleNav.style.display = 'block';
+            eleNav.style.top = '0';
+            eleNav.style.opacity = "1";
+            eleNav.style.display = "block";
+            eleD1.style.opacity = "1";
         } else {
-            eleNav.style.display = 'none';
+            eleNav.style.top = '-144px';
+            eleNav.style.opacity = "0";
+            eleNav.style.display = "none";
+            eleD1.style.opacity = "0";
         }
 
-        if (scrollPosition >= 460) { // 滚动超过200像素时显示元素
-            eleBar.style.display = 'block';
+        if (scrollPosition >= 460) {
+            eleBar.style.opacity = "1";
         } else {
-            eleBar.style.display = 'none';
+            eleBar.style.opacity = "0";
+        }
+
+        if (scrollPosition >= 796) {
+            eleStoryDescPic1.style.opacity = "1";
+        }
+        if (scrollPosition >= 1056) {
+            eleStoryDescPic2.style.opacity = "1";
+        }
+        if (scrollPosition >= 1800) {
+            eleStoryHeroPic1.style.opacity = "1";
+        }
+        if (scrollPosition >= 2900) {
+            eleStyorDescPic3.style.opacity = "1";
         }
     });
 
@@ -902,6 +1104,27 @@
             $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
         }
     })
+
+    function showModal(imageSrc) {
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const modalImage = document.getElementById('modalImage');
+
+        modalImage.src = imageSrc;
+        modalOverlay.style.display = 'flex'; // 显示遮罩层
+
+        setTimeout(() => {
+            modalContent.style.opacity = 1; // 设置透明度为1，显示模态框
+        }, 50);
+    }
+
+    function closeModal() {
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        modalOverlay.style.display = 'none'; // 隐藏遮罩层
+
+        modalContent.style.opacity = 0; // 设置透明度为0，隐藏模态框
+    }
 
     //林克版本运动
     // let links = 0
