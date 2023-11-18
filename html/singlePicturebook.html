@@ -6,15 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/reset1.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2306472_s8tp7k2au.css">
     <link rel="stylesheet" href="../css/pagination.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_1g8kuj64iuh.css">
-    <script src="../js/request.js"></script>
-    <script src="../js/ajax.js"></script>
     <script src="../js/jquery-1.10.1.min.js"></script>
-    <script src="../js/cookie.js"></script>
-    <script src="../js/page.js"></script>
     <script src="../js/jquery.pagination.js"></script>
     <script type="text/javascript" src="../jsons/picturebook/creatures.js"></script>
     <script type="text/javascript" src="../jsons/picturebook/equipment.js"></script>
@@ -22,959 +15,107 @@
     <script type="text/javascript" src="../jsons/picturebook/monsters.js"></script>
     <script type="text/javascript" src="../jsons/picturebook/treasure.js"></script>
 
-
     <style>
-        .page {
-            width: 100%;
+
+        .bodyBox1 {
+            background: linear-gradient(to right, #00f7ff40, #00f7ff26, #00f7ff40), url("../images/main_background.jpg");
+            position: relative;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
         }
 
-        .page2 {
-            width: 100%;
-            background: #f5f5f5;
+        .content-container-1 {
+            display: flex;
+            align-items: center; /* 在交叉轴上垂直居中 */
+            height: 100%;
         }
 
-        .head {
-            height: 120px;
-            background: url(../images/head.jpg) no-repeat 50%;
-            background-size: auto 120px;
+        .content-container-1 .cc1-left {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-end;
         }
 
-        .guildout {
-            background: #333;
-            width: 100%;
+        .content-container-1 .cc1-right {
+            flex: 1;
+            position: relative;
+            align-items: center;
+            display: flex;
+            padding-left: 24px;
         }
 
-        .guild {
-            height: 40px;
-            /* background: #333; */
+        .content-container-1 .cc1-right .cc1-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .guildf {
-            width: 770.13px;
-            height: 40px;
-            line-height: 40px;
-            float: left;
+        .content-container-1 .cc1-right .cc1-text-container h2 {
+            font-size: 28px;
+            color: #00f6ff;
         }
 
-        .guildf .gui {
-            color: #b0b0b0;
-            line-height: 40px;
-            display: inline-block;
-        }
-
-        .guildf span {
-            margin: 0 0.3em;
-            color: #424242;
-        }
-
-        .guildshop {
-            width: 120px;
-            height: 40px;
-            margin-left: 15px;
-            float: right;
+        .content-container-1 .cc1-left .cc1-image-container {
+            /* float: right; */
             position: relative;
         }
 
-        .guildshop1 {
-            line-height: 40px;
-            height: 40px;
-            text-align: center;
+        .content-container-1 .cc1-left .cc1-image-container img {
+            /* float: right; */
+            padding-right: 24px;
             display: block;
-            text-indent: 15px;
-            background: url(../images/shop.PNG) no-repeat #424242 17px center;
-            background-size: 15%;
-            color: #b0b0b0;
-
+            object-fit: contain;
         }
 
-        .guildshop1menu {
-            width: 360px;
-            height: 120px;
-            background-color: white;
-            text-align: center;
-            line-height: 120px;
+        .top-box-logo {
             position: absolute;
-            transition: .3s;
-            overflow: hidden;
-            top: 40px;
-            left: -240px;
-            height: 0px;
-            font-size: 14px;
-            z-index: 10;
-        }
-
-        .guildshop:hover .guildshop1menu {
-            height: 120px;
-            box-shadow: 0px 0px 5px black;
-        }
-
-        .guild2 {
-            float: right;
-            line-height: 40px;
-            color: #b0b0b0;
-        }
-
-        .guild21 {
-            padding: 0 5px;
-        }
-
-        .guild22 {
-            padding: 0 10px;
-        }
-
-        .find {
-            width: 1226px;
-            height: 100px;
-            position: relative;
-            /* overflow: hidden; */
-        }
-
-        .find0 {
-            width: 55px;
-            height: 55px;
-            margin-top: 22px;
-            float: left;
-            position: relative;
-            overflow: hidden;
-
-        }
-
-        .find1 {
-            width: 55px;
-            height: 55px;
-            background: url(../images/mi-logo.png) #ff6700 no-repeat center;
-            position: absolute;
+            margin-left: 8px;
             top: 0;
             left: 0;
-            transition: .3s;
-        }
-
-        .find0:hover .find1 {
-            left: 55px;
-            top: 0;
-        }
-
-        .find2 {
-            width: 55px;
-            height: 55px;
-            background: url(../images/mi-home.png) #ff6700 no-repeat center;
-            position: absolute;
-            top: 0;
-            left: -55px;
-            overflow: hidden;
-            transition: .3s;
-        }
-
-        .find0:hover .find2 {
-            top: 0;
-            left: 0;
-        }
-
-        .exx {
-            width: 1137px;
-            height: 88px;
-            padding: 12px 0 0 30px;
-            /* background-color: violet; */
-            float: left;
-        }
-
-        .kong {
-            float: left;
-            width: 127px;
-            height: 88px;
-            padding-right: 15px;
-            background-color: #fff;
-        }
-
-        .exx li {
-            line-height: 88px;
-            float: left;
-            font-size: 16px;
-        }
-
-        .exx .shopbox {
-            display: block;
-            width: 1226px;
-            height: 250px;
-            position: absolute;
-            top: 100px;
-            left: 0px;
-            height: 0;
-            overflow: hidden;
-            transition: .4s;
-            z-index: 101;
-        }
-
-        .shopli {
-            width: 200px;
-            text-align: center;
-            float: left;
-            /* border-right: 1px solid gray; */
-        }
-
-        .shopliname {
-            line-height: 30px;
-            font-size: 14px;
-        }
-
-        .shopliprice {
-            line-height: 30px;
-            font-size: 16px;
-            color: #ff6700;
-        }
-
-        .exx .shopbox img {
-            width: 180px;
-            height: 123px;
-        }
-
-        .exx li:hover .shopbox {
-            background-color: #fff;
-            height: 250px;
-        }
-
-        .exx li span {
-            padding: 26px 10px 38px 10px;
-        }
-
-        .exx li span:hover {
-            color: #ff6700;
-        }
-
-        .suoyin {
-            float: right;
-            height: 50px;
-            width: 297px;
-            margin-top: 13px;
-        }
-
-        .suoyin input {
-            margin: 0;
-        }
-
-        .suoyin .text {
-            border: 1px solid #e0e0e0;
-            outline: 0;
-            width: 223px;
-            height: 48px;
-            padding: 0 10px;
-            float: left;
-        }
-
-        .suoyin .submit {
-            border: 1px solid #e0e0e0;
-            outline: 0;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            line-height: 24px;
-            background: #fff;
-            color: #616161;
-            float: left;
-            background: url(../images/big.PNG)no-repeat center center;
-            background-size: 40%;
-        }
-
-
-        .main {
-            padding-top: 50px;
-            height: 800px;
-        }
-
-        .bigimg {
-            width: 560px;
-            height: 560px;
-        }
-
-        .verybig {
-            width: 1120px;
-            height: 1120px;
-            position: absolute;
-            /* left: 0;
-            width: 0; */
-            display: none;
-            z-index: 99;
-        }
-
-        .left {
-            width: 560px;
-            /* height: 560px; */
-            float: left;
-            /* background-color: #ff6700; */
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shadow {
-            width: 280px;
-            height: 280px;
-            /* background-color: rgba(150, 150, 150, .5); */
-            border: 1px solid rgba(0, 0, 0, 0);
-            position: absolute;
-            top: 0;
-            left: 0;
-            /* overflow: hidden; */
-            z-index: 90;
-        }
-
-        .left2 {
-            width: 560px;
-            height: 560px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .imglist {
-            height: 140px;
-            float: left;
-        }
-
-        .imglist li {
-            float: left;
-            border: 1px solid rgba(255, 255, 255);
-        }
-
-        .imglist img {
-            width: 138px;
-            height: 138px;
-        }
-
-        .right {
-            margin-left: 20px;
-            float: left;
-        }
-
-        .right h2 {
-            font-size: 24px;
-            font-weight: 400;
-            color: #212121;
-        }
-
-        .p1 {
-            color: #b0b0b0;
-            padding-top: 8px;
-            font-size: 14px;
-            width: 550px;
-        }
-
-        .p2 {
-            margin-top: 14px;
-            color: #ff6700;
-            font-size: 14px;
-        }
-
-        .ju {
-            border-bottom: 1px solid #e0e0e0;
-            margin-top: 14px;
-            margin-bottom: 10px;
-            width: 598px;
-            /* width: 100%; */
-        }
-
-        .price {
-            display: block;
-            font-size: 18px;
-            line-height: 1;
-            color: #ff6700;
-            padding: 12px 0 10px;
-        }
-
-        .beforePrice {
-            font-size: 14px;
-            margin-left: 5px;
-            color: #b0b0b0;
-        }
-
-        .address {
-            padding: 30px 50px;
-            width: 498px;
-            position: relative;
-            background: #fafafa;
-            border: 1px solid #e0e0e0;
-        }
-
-        .address i {
-            font-size: 20px;
-            width: 14px;
-            height: 14px;
-            position: absolute;
-            left: 25px;
-        }
-
-        .p11 {
-            color: #333;
-            line-height: 16px;
-        }
-
-        .p11 span {
-            padding-right: 14px;
-            font-size: 14px;
-        }
-
-        .change {
-            color: #ff6700;
-        }
-
-        .p12 {
-            font-size: 14px;
-            color: #ff6700;
-        }
-
-        .choose {
-            font-size: 18px;
-            color: #333;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        .fubox {
-            width: 600px;
-            height: 110px;
-        }
-
-        .colorbox {
-            color: #757575;
-            width: 285px;
-            height: 42px;
-            /* color: #ff6700; */
-            border: #e0e0e0 1px solid;
-            text-align: center;
-            font-size: 14px;
-            line-height: 42px;
-            float: left;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        .first {
-            border: #ff6700 1px solid;
-            color: #ff6700;
-        }
-
-        .message {
-            width: 540px;
-            height: 84px;
-            padding: 30px;
-            background-color: #f9f9fa;
-            color: #333;
-            line-height: 30px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        .message span {
-            color: #616161;
-        }
-
-        .message del {
-            float: right;
-            color: #616161;
-        }
-
-        .nprice {
-            float: right;
-        }
-
-        .ms {
-            color: #ff6700;
-            font-size: 24px;
-            padding-top: 20px;
-        }
-
-        .btnBox {
-            padding-top: 10px;
-            padding-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .buy {
-            width: 298px;
-            height: 52px;
-            line-height: 52px;
-            font-size: 16px;
-            background-color: #ff6700;
-            text-align: center;
-            color: white;
-            float: left;
-        }
-
-        .like {
-            background-color: #b0b0b0;
-            width: 140px;
-            height: 52px;
-            line-height: 52px;
-            text-align: center;
-            color: white;
-            float: left;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-
-        .like i {
-            font-weight: bolder;
-        }
-
-        .afterinto {
-            width: 600px;
-            height: 81px;
-        }
-
-        .afterinto p {
-            line-height: 30px;
-        }
-
-        .afterinto span {
-            color: #b0b0b0;
-            font-size: 14px;
-            margin-right: 5px;
-        }
-
-        .afterinto i {
-            font-size: 20px;
-        }
-
-        .waibox {
-            width: 100%;
-            text-align: center;
-        }
-
-        .last {
-            width: 1226px;
-            height: 300px;
-        }
-
-        .searve {
-            width: 1226px;
-            height: 25px;
-            padding: 27px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .svlist {
-
-            text-align: center;
-            font-size: 16px;
-            color: #616161;
-        }
-
-        .svlist li {
-            float: left;
-            width: 19.8%;
-            border-left: 1px solid #e0e0e0;
-            line-height: 30px;
-            position: relative;
-            transition: all .2s;
-        }
-
-        .svlist li :hover {
-            color: #ff6700;
-        }
-
-        .svlist li i {
-            font-size: 30px;
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            display: inline-block;
-            left: 45px;
-            top: 2px;
-        }
-
-        .svlist .icon-7tiantuihuanhuo {
-            font-size: 20px;
-            left: 40px;
-            top: 0px;
-        }
-
-        .svlist .icon-15tianwuliyoutuihuo {
-            font-size: 24px;
-            left: 43px;
-            top: 0px;
-        }
-
-        .svlist .icon-icon-test {
-            top: 0px;
-            left: 53px;
-        }
-
-        .svlist .icon-icon_dizhi {
-            top: 0;
-            left: 30px;
-        }
-
-        .wai {
-            width: 100%;
-            background-color: #fff;
-        }
-
-        .footer {
-            width: 100%;
-            padding: 40px 0;
-        }
-
-        .footlis {
-            width: 160px;
-            float: left;
-        }
-
-        .footer dt {
-            margin: -1px 0 26px;
-            font-size: 14px;
-            line-height: 1.25;
-            color: #424242;
-        }
-
-        .footer dd {
-            margin: 10px 0 0;
-            font-size: 12px;
-            color: #757575;
-        }
-
-        .concat {
-            width: 251px;
-            float: right;
-            /* background-color: orange; */
-            text-align: center;
-
-        }
-
-        .PhoneNumber {
-            color: #ff6700;
-            font-size: 22px;
-            padding-bottom: 5px;
-        }
-
-        .yuyue {
-            line-height: 28px;
-            border: #ff6700 solid 1px;
-            width: 118px;
-            height: 28px;
-            margin: auto;
-            color: #ff6700;
-
-        }
-
-        .huafei {
-            color: #616161;
-            line-height: 20px;
-        }
-
-        .abXm {
-            margin-top: 10px;
-            font-size: 12px;
-            line-height: 20px;
-            position: relative;
-        }
-
-
-        .abXm i {
-            font-size: 20px;
-            margin: 0 2px;
-        }
-
-        .abXm i:hover {
-            color: #ff6700;
-        }
-
-        .abXm img {
-            width: 100px;
-            height: 100px;
-        }
-
-        #ewm {
-            /* width: 100px;
-            height: 100px; */
-            position: absolute;
-            top: 20px;
-            left: 110px;
-            overflow: hidden;
-            display: none;
-            z-index: 100;
-        }
-
-
-        .abXm .icon-weixin:hover #ewm {
-            display: block;
-        }
-
-        .lastfoot {
-            width: 100%;
-            height: 240px;
-            background-color: #fafafa;
-        }
-
-        .lf {
-            padding: 30px 0;
-        }
-
-        .zuologo {
-            width: 67px;
-            float: left;
-        }
-
-        .mibox {
-            width: 55px;
-            height: 55px;
-            background: url(../images/mi-logo.png) #ff6700 no-repeat center;
-        }
-
-        .textbox {
-            float: left;
-        }
-
-        .textP1 {
-            color: #757575;
-        }
-
-        .textP2 {
-            color: #b0b0b0;
-        }
-
-        .imgBox img {
-            margin-top: 10px;
-            width: auto;
-            height: 28px;
-        }
-
-        .imgBox .safeFuwu {
-            margin-top: 0;
-            width: 106px;
-            height: 40px;
-        }
-
-        .play i {
-            font-size: 14px;
-            /* width: 20px;
-            height: 20px; */
-        }
-
-        .imglist .active {
-            border-color: #ff6700;
-        }
-
-        .bar {
-            position: fixed;
-            bottom: 76px;
-            right: 0;
-            z-index: 99;
-            display: block;
-            position: fixed;
-        }
-
-        .bar1 {
-            position: relative;
-            display: block;
-            width: 82px;
-            height: 90px;
-            margin-top: -1px;
-            background-color: #fff;
-            border: 1px solid #f5f5f5;
-            text-align: center;
-        }
-
-        .bar img {
-            width: 30px;
-            height: 30px;
-            padding-top: 18px;
-            margin-bottom: 8px;
-        }
-
-        #saoma1 {
-            width: 100px;
-            height: 100px;
-            margin-top: 6px;
-            padding-top: 0px;
-        }
-
-        .saoma {
-            display: block;
-            width: 100px;
-            height: 161.6px;
-            margin: 0 auto;
-            padding: 14px;
-            text-align: center;
-            position: absolute;
-            left: -140px;
-            top: 0;
-            padding: 14px;
-            background: #fff;
-            border: 1px solid #f5f5f5;
-            overflow: hidden;
-            display: none;
-            z-index: 100;
-            transition: .3s;
-        }
-
-        .bar li:hover .saoma {
-            display: block;
-        }
-
-        .saoma p {
-            margin: 14px 9px 0px 9px;
-            display: block;
-            width: 82px;
-            font-size: 14px;
-            margin: 14px auto 0;
-            color: #757575;
-            text-align: center
-        }
-
-        .bigphone {
-            width: 234px;
-            height: 614px;
-            float: left;
-        }
-
-        .phoneshow {
-            width: 992px;
-            height: 614px;
-            /* background-color: violet; */
-            float: left;
         }
     </style>
 </head>
 
-<body>
+<body class="bodyBox1">
 
-    <!-- find s -->
-    <div class="find w">
-        <div class="find0">
-            <a href="index.html">
-                <div class="find1"></div>
-            </a>
-            <a href="index.html">
-                <div class="find2"></div>
-            </a>
-
-        </div>
-        </div>
+    <div class="top-box-logo">
+        <a href="index.html">
+          <img src="../images/zelda-botw-logo-small.png">
+        </a>
     </div>
-    <!-- find e -->
 
-
-    <div class="main w">
-        <div class="relleft">
-            <div class="left">
-                <div class="left2">
-                    <!-- <img class="verybig"
-                        src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81337301.jpg" alt="">
-                    <img class="bigimg"
-                        src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81337301.jpg" alt="">
-
-                    <div class="shadow"></div> -->
-                </div>
-                <!-- <div class="bigShadow"></div> -->
-                <ul class="imglist">
-                    <!-- <li class="active"><img
-                            src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81337301.jpg"
-                            alt="">
-                    <li><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81337301.jpg"
-                            alt="">
-                    <li><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81337301.jpg"
-                            alt="">
-                    <li><img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1576481939.81424900.jpg"
-                            alt=""> -->
-                </ul>
+    <div class="content-container-1">
+        <div class="cc1-left">
+            <div class="cc1-image-container">
+                <img>
             </div>
         </div>
-
-        <div class="right">
-            <h2>小米无线键鼠套装</h2>
-            <p class="p1">2.4G Hz无线传输 / 全尺寸104键 / 多功能快捷键 / 简洁轻薄</p>
-            <p class="p2">小米自营</p>
-            <p class="price"><span class="nowPrice">89 元</span><del class="beforePrice">99 元</del></p>
-            <div class="ju"></div>
-            <div class="address">
-
-                <p class="p11"><i
-                        class="iconfont icon-icon_dizhi"></i><span>北京</span><span>北京市</span><span>海淀区</span><span>xx街道</span><span
-                        class="change">修改</span></p>
-                <p class="p12">有现货</p>
-            </div>
-            <p class="choose">选择颜色</p>
-            <div class="colorbox">黑色</div>
-
-            <div class="message">
-                <span>小米无线键鼠套装 黑色</span>
-                <del>99元</del>
-                <span class="nprice">89元</span>
-                <p class="ms">秒杀价：89元</p>
-            </div>
-            <div class="btnBox">
-                <div class="buy">登陆后购买</div>
-                <div class="like"><i class="iconfont icon-xihuan"></i> 喜欢</div>
-            </div>
-            <div class="afterinto">
-                <p>
-                    <span><i class="iconfont icon-dui"></i>小米自营</span>
-                    <span><i class="iconfont icon-dui"></i>小米发货</span>
-                    <span><i class="iconfont icon-dui"></i>7天无理由退货</span>
-                    <span><i class="iconfont icon-dui"></i>运费说明</span>
-                    <span><i class="iconfont icon-dui"></i>企业信息</span>
-                </p>
-                <p>
-                    <span><i class="iconfont icon-dui"></i>售后服务政策</span>
-                    <span><i class="iconfont icon-dui"></i>7天价格保护</span>
-                </p>
+        <div class="cc1-right">
+            <div class="cc1-text-container">
+                <h2></h2>
+                <p></p>
             </div>
         </div>
     </div>
-
-    <div class="wai">
-        <div class="bar">
-            <ul>
-                <li>
-                    <div class="bar1 bar6">
-                        <img src="https://i1.mifile.cn/f/i/2018/home/totop_hover.png" alt="">
-                        <p>回顶部</p>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-
 </body>
 <script>
-    $(".bar5").click(function () {
-        var logUser = getCookie("logUser");
-        if (logUser) {
-            location.href = "shopCar.html";
-        } else {
-            location.href = "./login.html?returnUrl=" + encodeURIComponent(location.href);
+
+    function obtainCategoryName(category) {
+        var name = ""
+        switch (category) {
+            case "creature" : name = "生物"; break;
+            case "equipment" : name = "装备"; break;
+            case "material" : name = "材料"; break;
+            case "monster" : name = "怪物"; break;
+            case "treasure" : name = "宝物"; break;
         }
-    })
-    $(".guild23").click(function () {
-        location.href = "./login.html?returnUrl=" + encodeURIComponent(location.href);
-    })
-    var cookie = document.cookie;
-    if (cookie) {
-        var logUser = getCookie("logUser");
-        if (logUser) {
-            console.log("welcome");
-            $(".guild2").html(`欢迎您,${logUser} <button onclick="exit()">退出</button>`);
-        }
+        return name;
     }
-    $(".bar6").click(function () {
-        bTtimer = setInterval(function () {
-            // console.log(document.documentElement.scrollTop)
-            document.documentElement.scrollTop -= 200;
-            if (document.documentElement.scrollTop <= 0) {
-                clearInterval(bTtimer);
-            }
-        }, 10)
-    })
-    $(".submit").click(function () {
-        console.log(123);
-        var key = $('.text').val();
-        if (key) {
 
-            location.href = "goodsList.html?" + encodeURIComponent(encodeURIComponent(key));
-        } else {
-            location.href = `goodsList.html`;
-        }
-
-    })
     var search = location.search;
     var paramsKV = search.replace("?", "").split("&")
     var gid = paramsKV[0].split("=")[1];
@@ -1010,239 +151,23 @@
                 break
         }
 
-        console.log(data)
-        // let {data} = picData
         if (gid) {
-            // searchGoodsByGoodsId({ gid }).then(data => {
             var { id,name,image,desc,category } = data;
 
-            leftHTML = `<img class="verybig"
-                        src="${image}">
-                    <img class="bigimg"
-                        src="${image}">
-
-                    <div class="shadow"></div>`;
-
-            // smallPicList.forEach(function (smallImg, index) {
-            //     if (index <= 4) {
-            //         switchHTML += `<li class="${index == 0 ? 'active' : ''}"><img src="${smallPicList[index]}"  alt=""></li>`
-            //     }
-            // })
+            leftHTML2 = `
+            <img src="${image}" style="width: 320px; height: 320px;">`;
 
             rightHTML = ` <h2>${name}</h2>
-            <p class="p2">小米自营</p>
-            <p class="price"><span class="nowPrice">${category} 元</span>
-            <div class="ju"></div>
-            <div class="address">
-
-                <p class="p11"><i
-                        class="iconfont icon-icon_dizhi"></i><span>北京</span><span>北京市</span><span>海淀区</span><span>xx街道</span><span
-                        class="change">修改</span></p>
-                <p class="p12">有现货</p>
-            </div>
-            <p class="choose">选择颜色</p>
-            <div class = "fubox">
-            <div class="colorbox first">黑色</div>
-            <div class="colorbox">白色</div>
-            <div class="colorbox">蓝色</div>
-            <div class="colorbox">烟紫(素皮)</div>
-            </div>
-            <div class="afterinto">
-                <p>
-                    <span><i class="iconfont icon-dui"></i>小米自营</span>
-                    <span><i class="iconfont icon-dui"></i>小米发货</span>
-                    <span><i class="iconfont icon-dui"></i>7天无理由退货</span>
-                    <span><i class="iconfont icon-dui"></i>运费说明</span>
-                    <span><i class="iconfont icon-dui"></i>企业信息</span>
-                </p>
-                <p>
-                    <span><i class="iconfont icon-dui"></i>售后服务政策</span>
-                    <span><i class="iconfont icon-dui"></i>7天价格保护</span>
-                </p>
-            </div>`
-            $(".left2").html(leftHTML);
-            $(".imglist").html(switchHTML);
-            $(".right").html(rightHTML);
-            // })
-
+            <br>
+            <p style="color: #e0e0e0; font-size: large;max-width: 480px;">${obtainCategoryName(category)}</p>
+            <br>
+            <br>
+            <p style="color: #00f6ff; font-size: 20px;max-width: 480px;">${desc}</p>
+            `
+            $(".cc1-image-container").html(leftHTML2)
+            $(".cc1-text-container").html(rightHTML)
         }
-    } 
-    // var logUser = getCookie("logUser");
-    /* color: #ff6700; */
-    /* border: #ff6700 1px solid; */
-    $(document).on("click", ".colorbox", function () {
-        $(this).css({ color: "#ff6700", border: "#ff6700 1px solid" }).siblings().css({ color: "#757575", border: "#e0e0e0 1px solid" })
-    })
-
-    $(document).on("mousemove", ".left2", function (e) {
-        var swidth = $(".shadow").width();
-        var max = $(".left2").width() - $(".shadow").width();
-        // console.log(max);
-        var cha = $(".left2").width() / $(".shadow").width();
-        // var offsetLeft = $(".left");
-        var x = e.pageX;
-        var y = e.pageY;
-        $('.shadow').offset({
-            top: y - (swidth / 2),
-            left: x - (swidth / 2)
-        })
-        var cur = $(".shadow").position();
-        if (cur.top < 0) cur.top = 0;
-        if (cur.top >= max - 2) cur.top = max - 2;
-        if (cur.left < 0) cur.left = 0;
-        if (cur.left >= max - 2) cur.left = max - 2;
-        $('.shadow').css({ top: cur.top });
-        console.log(cur.top);
-        $('.shadow').css({ left: cur.left });
-        $('.verybig').css({
-            display: 'block',
-            top: - cha * cur.top,
-            left: - cha * cur.left
-        });
-    })
-    $(document).on("mouseleave", ".left2", function (e) {
-        $('.verybig').css({ display: 'none' });
-    })
-    $(document).on("mouseenter", ".imglist li", function () {
-        $(this).addClass("active").siblings().removeClass("active");
-        var bigSrc = $(this).find("img").prop("src");
-        $('.bigimg').prop("src", bigSrc);
-        $('.verybig').prop("src", bigSrc);
-    })
-    var likeflag = false;
-    $(document).on("click", ".like", function () {
-        if (likeflag) {
-            $(".like i").css({
-                color: "white",
-            })
-            $(".like").css({ color: "white" });
-            likeflag = false;
-            return false;
-        }
-        $(".like i").css({
-            color: "red",
-        })
-        $(".like").css({ color: "red" });
-        likeflag = true;
-    })
-    $(document).on("click", ".buy", function () {
-        // console.log("判断用户是否登录");
-        var user = getCookie("logUser");   // 
-        if (user) {  // 用户登录
-            console.log("加入购物车");
-
-            // 加入购物车  =>   谁  买了什么东西  买了多少件 ?
-            // 谁           =>   登录的用户  user
-            // 买了什么东西  =>   goodsId()
-            // 买了多少件    =>   $(".buyNum .count-input").val();
-
-
-            //  0  已经被删除了(假删)
-            //  1  假如购物车但是还没有购买
-            //  2  买了还没有付钱
-            //  3  已经购买正在发货 
-            var buyNum = 1;
-            console.log(user, gid, buyNum);
-            addToShoppingCar({
-                user,
-                gid,
-                buyNum
-
-            }).then(result => {
-                console.log(user, gid, buyNum)
-                console.log(result);
-                if (result.status) {
-
-                    if (confirm("商品添加成功,是否进入购物车")) {
-                        location.href = "./shopCar.html";
-                    }
-                }
-                else {
-                    alert(result.msg);
-                }
-
-
-            })
-
-        } else {  // 用户没有登录   => 返回登录(记录当前页面的地址 returnUrl  )
-
-            // var url = encodeURIComponent(location.href);
-
-            location.href = "./login.html?returnUrl=" + encodeURIComponent(location.href);
-        }
-    })
-
-    $(document).on("click", ".buy", function () {
-
-    })
-    getData();
-    function getData() {
-
-        var key = "";   // ""  可以搜索全部数据
-        var orderCol = "id"; // 默认排序列名 id
-        var orderType = "asc"; // 默认排序方式  asc
-        var showNum = "6";    // 每页显示多少条
-        var pageIndex = 1;   // 默认显示第一页
-
-
-
-
-        searchMiGoods({ key, orderCol, orderType, pageIndex, showNum }).then(data => {
-            var { maxPage, list, count } = data;
-
-            pageIndex = pageIndex > maxPage ? maxPage : pageIndex;
-            // $('.M-box').pagination({
-            //     totalData: count,   // count
-            //     showData: showNum,     //showNum
-            //     current: pageIndex,
-            //     mode: "fixed",
-            //     count: 4,         //showPage
-
-            //     prevContent: "<",
-            //     nextContent: ">",
-
-            //     // 首页尾页是否开启  和  规定内容
-            //     coping: true,
-            //     homePage: "首页",
-            //     endPage: "尾页",
-
-            //     // 跳转是否开启  和  规定内容
-            //     jump: true,
-            //     jumpBtn: "go",
-
-            //     callback: function (api) {
-            //         console.log(api.getCurrent());  // 获取当前页
-            //         var index = api.getCurrent();
-            //         pageIndex = index;
-            //         getData();
-            //     }
-            // });
-            // console.log(list);
-
-            var html = "";
-            list.forEach(function (goods) {
-                var { goodsId, goodsName, goodsPrice, bigPicList } = goods
-                html += `<div class="shopli">
-                <div class="shopImgbox">
-                    <img src="${bigPicList}"
-                        alt="">
-                </div>
-                <p class="shopliname">${goodsName}</p>
-                <p class="shopliprice">${goodsPrice}元起</p>
-            </div>`;
-            })
-            $(".shopbox").html(html);
-        })
     }
-    function exit() {
-        delCookie("logUser");
-        location.reload();
-    }
-
-
-
-
-
 </script>
 
 </html>
