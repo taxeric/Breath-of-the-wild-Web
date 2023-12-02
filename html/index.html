@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../css/reset1.css">
     <link rel="stylesheet" href="../css/pic-modal.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_2344715_qnw0jbho3mf.css">
@@ -51,7 +51,7 @@
         }
 
         .page2 {
-            margin-top: 80px;
+            margin-top: 40px;
             width: 100%;
         }
 
@@ -351,6 +351,103 @@
             height: 100%;
         }
 
+        .haibao {
+            padding-top: 48px;
+            width: 1226px;
+            height: 618px;
+            position: relative;
+        }
+
+        .left {
+            position: absolute;
+            top: 342px;
+            left: 63px;
+            width: 64px;
+            height: 64px;
+            z-index: 100;
+        }
+
+        .left :hover {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 40px;
+            height: 60px;
+        }
+
+        .left i {
+            font-size: 30px;
+            line-height: 62px;
+
+        }
+
+        .right i {
+            margin-left: 5px;
+            font-size: 30px;
+            line-height: 62px;
+
+        }
+
+        .right :hover {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 40px;
+            height: 58px;
+        }
+
+        .right {
+            position: absolute;
+            top: 342px;
+            left: 1126px;
+            width: 64px;
+            height: 64px;
+            z-index: 100;
+        }
+
+        .liList {
+            position: absolute;
+            bottom: 10px;
+            left: 1020px;
+        }
+
+        .liList li {
+            float: left;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            border: 2px solid rgba(100, 100, 100, 1);
+            border-radius: 45px;
+        }
+
+        .haibao {
+            overflow: hidden;
+        }
+
+        .haibao .fish {
+            padding: 0 63px;
+            display: block;
+        }
+
+        .fish {
+            float: left;
+        }
+
+        .haibao1 {
+            width: 7000px;
+            position: relative;
+            float: left;
+            overflow: hidden;
+        }
+
+        .haibao1 .fishBox {
+            width: 1100px;
+            height: 100%;
+        }
+
+        .fishBox img {
+            width: 100%;
+            height: 100%;
+        }
+
         .contentDescriptionBox {
             display: flex;
             justify-content: center;
@@ -364,189 +461,6 @@
             justify-content: center; 
         }
 
-        .ppbox {
-            width: 100%;
-            padding-top: 20px;
-            overflow: hidden;
-        }
-
-        .parallax {
-            transform: skew(5deg) rotate(-5deg);
-            padding: 30px 0;
-            margin: 60px 0;
-            position: relative;
-        }
-
-        .parallax__wrapper {
-            position: relative;
-            /* padding-top: 30px;
-            padding-bottom: 30px; */
-            margin-bottom: 15px;
-        }
-
-        .parallax--trials .parallax__bg {
-            background: url("../images/parallax-2.jpg") center center no-repeat;
-            background-size: cover;
-        }
-
-        .parallax__bg {
-            overflow: hidden;
-            height: 100%;
-            top: 0;
-        }
-
-        .parallax__img {
-            transform: skew(5deg) rotate(5deg) translateY(-50%);
-            width: 100%;
-            height: 200%;
-            position: absolute;
-            top: 50%;
-            left: -10%;
-        }
-
-        .parallax__img-scroller {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            will-change: transform;
-        }
-
-        .parallax--trials .parallax__content {
-            margin-top: 0;
-            margin-bottom: 0;
-            transform: none;
-            overflow: hidden;
-        }
-
-        .parallax::before,
-        .parallax::after,
-        .parallax__bg {
-            transform: translateX(-50%);
-            width: 125%;
-            position: absolute;
-            left: 50%;
-        }
-
-        .parallax::before {
-            top: 0;
-        }
-
-        .parallax::before,
-        .parallax::after {
-            content: " ";
-            background: url("../images/divider-content.png") center center repeat-x;
-            height: 30px;
-        }
-
-        .parallax::before,
-        .parallax::after {
-            box-sizing: border-box;
-        }
-
-        .parallax--trials img {
-            transform: skew(-5deg) rotate(5deg) translateY(50px);
-            margin: -80px auto 0;
-            max-width: 100%;
-        }
-
-        [class*='row-flex'],
-        .row {
-            margin: 0 auto;
-            max-width: 1140px;
-            width: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .content-container-1 {
-            display: flex;
-        }
-
-        .content-container-1 .cc1-left {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .content-container-1 .cc1-right {
-            flex: 1;
-            position: relative;
-            display: flex;
-            padding-left: 24px;
-        }
-
-        .content-container-1 .cc1-right .cc1-text-container {
-            margin: auto 0;
-        }
-
-        .content-container-1 .cc1-left .cc1-image-container {
-            float: right;
-            position: relative;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .content-container-1 .cc1-left .cc1-image-container img {
-            float: right;
-            max-width: 60%;
-            padding-top: 36px;
-            padding-bottom: 36px;
-            padding-right: 24px;
-            display: block;
-            object-fit: contain;
-            transform: rotate(-5deg);
-        }
-
-        .content-container-2 {
-            display: flex;
-        }
-
-        .content-container-2 .cc2-right {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .content-container-2 .cc2-left {
-            flex: 1;
-            position: relative;
-            display: flex;
-            padding-right: 24px;
-        }
-
-        .content-container-2 .cc2-left .cc2-text-container {
-            position: absolute;
-            padding-top: 10%;
-            right: 0px;
-            margin: auto 0;
-        }
-
-        .content-container-2 .cc2-right .cc2-image-container {
-            float: left;
-            position: relative;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .content-container-2 .cc2-right .cc2-image-container img {
-            float: left;
-            max-width: 60%;
-            padding-top: 36px;
-            padding-bottom: 36px;
-            padding-left: 24px;
-            display: block;
-            object-fit: contain;
-            transform: rotate(5deg);
-        }
-
-        .content-container-3-image-container {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-       
     </style>    
     <link rel="stylesheet" href="../css/pagination.css">
 </head>
@@ -556,6 +470,11 @@
     <div class="top-navigator">
         <div class="top-div">
             <ul>
+                <li>
+                    <a href="../html/story.html">
+                        <span>Story</span>
+                    </a>
+                </li>
                 <li>
                     <a href="../html/memoriesList.html">
                         <span>Memories</span>
@@ -586,6 +505,11 @@
             <div>
                 <ul class="exxul">
                     <li>
+                        <a href="../html/story.html">
+                            <span>Story</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="../html/memoriesList.html">
                             <span>Memories</span>
                         </a>
@@ -605,76 +529,51 @@
         </div>
     </div>
 
-    <br><br><br><br>
-
-    <div class="content-container-1">
-        <div class="cc1-left">
-            <div class="cc1-image-container">
-                <img src="../images/story_desc.png" onclick="showModal('../images/story_desc.png')">
+    <div class="haibao w">
+        <div class="left"><i class="iconfont icon-zuojiantou"></i></div>
+        <div class="right"><i class="iconfont icon-youjiantou1"></i></div>
+        <div class="haibao1">
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-1.jpg" alt="">
             </div>
-        </div>
-        <div class="cc1-right">
-            <div class="cc1-text-container">
-                <p style="color: #e0e0e0; font-size: large;text-indent:2em;max-width: 480px;">
-                    传说中，每当邪恶的古老恶魔——灾厄盖侬降临海拉鲁王国并带来不幸时，两位光之勇者——女神海利亚后代的光明公主和她的骑士，都能成功地击败邪恶并带回和平。海拉鲁王国内的人们决定用他们先进的科技制造出守护者和四只巨大的神兽用以协助勇者。当灾厄盖侬再度降临时，勇者和公主成功地将其再次封印。
-                </p>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-2.jpg" alt="">
             </div>
-        </div>
-    </div>
-
-    <div class="content-container-2">
-        <div class="cc2-left">
-            <div class="cc2-text-container">
-                <p style="color: #e0e0e0; font-size: large;text-indent:2em;max-width: 480px;">
-                    一万年过去了，海拉鲁王国曾经的辉煌先进早已不复在。但在人们发掘王国内不同区域的时候却挖出了应该是只存在传说中、已经废弃许久的神兽和守护者残骸。塞尔达公主和骑士林克决定效仿古人的做法，用这些神兽和盖侬对决。他们指派了四位英杰——鼓隆族的“达尔克尔”、卓拉族的“米法”、利特族的“力巴尔”和格鲁德族的“乌尔波扎”去操控四只神兽。
-                </p>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-6.jpg" alt="">
             </div>
-        </div>
-        <div class="cc2-right">
-            <div class="cc2-image-container">
-                <img src="../images/Picture_of_the_Champions.webp" onclick="showModal('../images/Picture_of_the_Champions.webp')">
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-4.jpg" alt="">
             </div>
+            <div class="fishBox">
+                <img class="fish" src="../images/banner/desktop-5.jpg" alt="">
+            </div>
+            <ul class="liList">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </div>
 
-    <div class="ppbox">
-        <div class="parallax parallax--trials" data-controller="" data-img="../images/parallax-2.jpg" data-speed="2">
-            ::before
-            <div class="parallax__wrapper">
-                <div class="parallax__bg">
-                    <div class="parallax__img">
-                        <div class="parallax__img-scroller"></div>
-                    </div>
-                </div>
-                <div class="parallax__content">
-                    <div class="row">
-                        <img src="../images/parallax-character.png" alt="">
-                    </div>
-                </div>
-            </div>
-            ::after
+    <br>
+
+    <div class="contentDescriptionBox" style="margin-top: 12px;">
+        <div class="contentDescription">
+            <h1 style="color: #e0e0e0; font-size: 32px; max-width: 900px;font-family: Courgette-Regular;text-align: center;">
+                Open your eyes
+            </h1>
         </div>
     </div>
 
-    <div style="text-align: center;">
-        <img src="../images/Isolated-HD-Pictures.png">
-        <div style="display: flex; justify-content: center; margin-top: 48px;">
-            <p style="color: #e0e0e0; font-size: large; max-width: 700px; text-align: center;text-indent:2em;">
-                但是他们没有想到灾厄盖侬会从城堡正下方重新复活，灾厄盖侬的奇袭导致了惨剧－四位英杰被杀、城堡被毁、守护者也被邪恶力量控制反过来攻击国民，海拉鲁王国覆灭了。林克在保护塞尔达时受到重伤而被带去治疗，塞尔达则孤身一人使用自己的力量将盖侬压制在城堡中。
+    <div class="contentDescriptionBox" style="margin-top: 8px;">
+
+        <div class="contentDescription">
+            <p style="color: #e0e0e0; font-size: large; max-width: 900px;font-family: Courgette-Regular;text-align: center;">
+                No kingdom. No memories. After a 100-year slumber, Link wakes up alone in a world he no longer remembers. Now the legendary hero must explore a vast and dangerous land and regain his memories before Hyrule is lost forever.    
             </p>
-        </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 48px;">
-        <div class="content-container-3-image-container">
-            <img src="../images/link_epona.png" style="width: 50%; height: auto;">  
-        </div>
-        <div class="contentDescriptionBox" style="margin-top: 12px;">
-            <div class="contentDescription">
-                <p style="color: #e0e0e0; font-size: large; max-width: 900px;">
-                    一百年后，康复的林克终于重新苏醒。他在一个神秘的女性声音的带领下遇见了一位长者，长者在告诉林克海拉鲁王国的遭遇后显现他的真实身份——海拉鲁国王罗姆的灵魂。国王告诉林克塞尔达已经将盖侬给压制在城堡内一百年了，体力已经到达极限。林克必须在盖侬壮大自己的力量并破坏封印前拯救海拉鲁王国。
-                </p>
-            </div>
         </div>
     </div>
 
@@ -796,15 +695,28 @@
         </div>
     </div>
 
-    <div>
+    <!-- <div>
         <img src="../images/main_background5.jpg" style="width: 100%; height: auto; margin-top: 56px;" >
+    </div> -->
+
+    <br><br>
+    <br><br>
+
+    <div class="contentDescriptionBox" style="margin-top: 12px;">
+        <div class="contentDescription">
+            <h1 style="color: #e0e0e0; font-size: 48px; max-width: 900px;font-family: Satisfy-Regular;text-align: center;">
+                The Legend of Zelda™: Breath of the wild
+            </h1>
+        </div>
     </div>
+
+    <br><br>
 
     <div class="bar">
         <ul>
             <li>
                 <div class="bar1 bar6">
-                    <img src="https://i1.mifile.cn/f/i/2018/home/totop_hover.png" alt="">
+                    <img src="../images/BotW_Korok_Seed_Icon.webp" style="cursor: pointer;" alt="">
                     <p>回顶部</p>
                 </div>
             </li>
@@ -824,10 +736,6 @@
         var eleBar = document.querySelector('.bar');
         var eleNav = document.querySelector(".top-navigator");
         var eleD1 = document.querySelector(".divider-1");
-        var eleStoryDescPic1 = document.querySelector(".cc1-image-container");
-        var eleStoryDescPic2 = document.querySelector(".cc2-image-container");
-        var eleStoryHeroPic1 = document.querySelector(".row");
-        var eleStyorDescPic3 = document.querySelector(".content-container-3-image-container");
         var scrollPosition = window.scrollY;
 
         if (scrollPosition >= 144) {
@@ -844,22 +752,10 @@
             eleD1.style.opacity = "0";
         }
 
-        if (scrollPosition >= 360) {
-            eleStoryDescPic1.style.opacity = "1";
-        }
-
         if (scrollPosition >= 460) {
             eleBar.style.opacity = "1";
-            eleStoryDescPic2.style.opacity = "1";
         } else {
             eleBar.style.opacity = "0";
-        }
-
-        if (scrollPosition >= 1200) {
-            eleStoryHeroPic1.style.opacity = "1";
-        }
-        if (scrollPosition >= 2200) {
-            eleStyorDescPic3.style.opacity = "1";
         }
     });
 
@@ -868,26 +764,127 @@
         $('html, body').animate({ scrollTop: 0 }, 800);
     })
 
-    function showModal(imageSrc) {
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalContent = document.getElementById('modalContent');
-        const modalImage = document.getElementById('modalImage');
+    $(function () {
+        //刚开始设置一个index，index为图片的索引值
+        var index = 0;
+        //当图片索引为0时,显示对应的图片,其他的隐藏
+        $(".fish").hide();
+        $(".fish").eq(index).show();
+        //图片对应的下面的小圆圈设置背景颜色
+        $(".liList li").eq(index).css("background-color", "black");
+        $("baby").css("background-color", "black");
+        // $(".bodyBox").css("background", `url(${$(".fish").eq(index).attr("src")})`);
+        //设置一个定时器
+        timer1 = setInterval(function () {
+            var imgObj = $(".fish");
+            //index的值加1，如果index值大于3就等于0
+            index++;
+            if (index > 4) {
+                index = 0;
+            }
+            //设置对应之外的小圆圈背景颜色
+            $(".liList li").css("background-color", "rgba(100,100,100,0)");
+            //设置对应索引的小圆圈背景颜色
+            $(".liList li").eq(index).css("background-color", "black");
+            // $(".bodyBox").css("background", `url(${$(".fish").eq(index).attr("src")})`);
+            imgObj.fadeOut(500),
+                imgObj.eq(index).fadeIn(1000);
+        }, 3000);
+        //鼠标悬停清除定时器
+        $(".fish").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".left").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".right").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        $(".liList li ").mouseenter(function () {
+            clearInterval(timer1);
+        });
+        //鼠标移走重启定时器
+        $(".fish,.left,.right").mouseleave(function () {
+            timer1 = setInterval(function () {
+                var imgObj = $(".fish");
+                index++;
+                if (index > 4) {
+                    index = 0;
+                }
+                imgObj.fadeOut(500);
+                imgObj.eq(index).fadeIn(1000);
+                $(".liList li").css("background-color", "rgba(0,0,0,0)");
+                $(".liList li").eq(index).css("background-color", "black");
+            }, 3000);
+        });
+        //点击下一张
+        $(".right").click(function () {
+            index += 1;
+            if (index > 4) {
+                index = 0;
+            }
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+            $(".liList li").css("background-color", "lightskyblue");
+            $(".liList li").eq(index).css("background-color", "white");
+        });
+        //点击上一张
+        $(".left").click(function () {
+            index -= 1;
+            if (index < 0) {
+                index = 4;
+            }
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+            $(".liList li").css("background-color", "lightskyblue");
+            $(".liList li").eq(index).css("background-color", "white");
+        });
+        //点击下面的小圆圈显示对应的图片
+        $(".liList li").click(function () {
+            //获得被点击的li元素的索引值
+            index = $(".liList li").index(this);
+            $(".liList li").css("background-color", "rgba(100,100,100,0)");
+            $(".liList li").eq(index).css("background-color", "black");
+            $(".fish").fadeOut(500);
+            $(".fish").eq(index).fadeIn(1000);
+        });
+    });
 
-        modalImage.src = imageSrc;
-        modalOverlay.style.display = 'flex'; // 显示遮罩层
-
-        setTimeout(() => {
-            modalContent.style.opacity = 1; // 设置透明度为1，显示模态框
-        }, 50);
-    }
-
-    function closeModal() {
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalContent = document.getElementById('modalContent');
-        modalOverlay.style.display = 'none'; // 隐藏遮罩层
-
-        modalContent.style.opacity = 0; // 设置透明度为0，隐藏模态框
-    }
+    var num = $('.juli2').size()
+    var index = 0;
+    $(".zuo").click(function () {
+        index--;
+        if (index <= 0) {
+            index = 0;
+            $(".you").css({ color: "gray" })
+        }
+        $(".julibox").stop().animate({ left: (index * -310) }, 1000, function () {
+        })
+    })
+    var timer = null;
+    timer = setInterval(function () {
+        index++;
+        if (index == num - 4) {
+            $(".you").css({ color: "gray" });
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        } else if (index > num - 4) {
+            index = 0;
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+        else {
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+    }, 4000)
+    $(".you").click(function () {
+        index++;
+        if (index >= num - 4) {
+            index = num - 4;
+            $(".you").css({ color: "gray" });
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        } else {
+            $(".julibox").stop().animate({ left: (index * -310) }, 1000,)
+        }
+    })
 
     //林克版本运动
     // let links = 0

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <title>Magnifier Effect</title>
+  <style>
+    .container {
+      position: relative;
+    }
+
+    .image-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .magnifier {
+      position: absolute;
+      width: 100px; /* 放大镜的宽度 */
+      height: 100px; /* 放大镜的高度 */
+      border: 2px solid #000;
+      opacity: 0.5; /* 放大镜的透明度 */
+      cursor: none; /* 隐藏鼠标指针 */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="image-container">
+    <img src="../images/picturebook/ancient_battle_axe_2.png" alt="原始图像">
+    <div class="magnifier"></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var container = $(".container");
+    var magnifier = $(".magnifier");
+    var image = $(".image-container img");
+
+    var magnification = 2; // 放大倍数
+
+    container.mousemove(function(e) {
+      var containerOffset = container.offset();
+      var x = e.pageX - containerOffset.left;
+      var y = e.pageY - containerOffset.top;
+
+      var magnifierSize = magnifier.width() / 2;
+
+      // 计算放大镜的位置
+      var magnifierX = x - magnifierSize;
+      var magnifierY = y - magnifierSize;
+
+      // 限制放大镜的移动范围
+      if (magnifierX < 0) {
+        magnifierX = 0;
+      }
+      if (magnifierY < 0) {
+        magnifierY = 0;
+      }
+      if (magnifierX > container.width() - magnifier.width()) {
+        magnifierX = container.width() - magnifier.width();
+      }
+      if (magnifierY > container.height() - magnifier.height()) {
+        magnifierY = container.height() - magnifier.height();
+      }
+
+      // 更新放大镜位置
+      magnifier.css({ left: magnifierX, top: magnifierY });
+
+      // 计算并更新放大效果
+      var zoomX = -magnifierX * magnification;
+      var zoomY = -magnifierY * magnification;
+      image.css({ transform: "scale(" + magnification + ")", "transform-origin": zoomX + "px " + zoomY + "px" });
+    });
+
+    container.mouseleave(function() {
+      // 鼠标离开时重置放大效果
+      image.css({ transform: "scale(1)", "transform-origin": "0 0" });
+    });
+  });
+</script>
+
+</body>
+</html>
